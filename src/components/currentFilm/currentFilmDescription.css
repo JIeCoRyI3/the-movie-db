@@ -1,0 +1,25 @@
+.currentFilmContainer {
+    display: flex;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: italic;
+    width: 80%;
+}
+
+.currentFilmContainer_poster {
+    width: 10em;
+}
+
+.currentFilmContainer_detailsContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-left: 1em;
+}
+
+.currentFilmContainer_detailsContainer-titleContainer {
+    display: flex;
+}
+
+.currentFilmContainer_detailsContainer-titleContainer-title {
+    margin-right: 1em;
+}
