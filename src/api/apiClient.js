@@ -41,4 +41,5 @@ export class ApiClient {
 
     //  genres
     getAllGenres = async () => await this.postGlobalResource(`/genre/movie/list` + this.createFilterString(), null, null, 'GET', true);
+    filterWithGenres = async (genreObj) => await this.postGlobalResource(`/discover/movie/` + this.createFilterString(genreObj), null, null, 'GET', true)
 }
