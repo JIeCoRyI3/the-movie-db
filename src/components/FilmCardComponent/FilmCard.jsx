@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './filmCard.module.css';
+import styles from './FilmCard.module.css';
 
 const FilmCard = () => {
     // const { poster_path, title, release_date, genres } = props;
