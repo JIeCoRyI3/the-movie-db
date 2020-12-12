@@ -4,13 +4,13 @@
     flex-direction: column;
 }
 
-.searchBarContainer_title, 
-.searchBarContainer_search-title {
+.title, 
+.searchTitle {
     font-family: Arial, Helvetica, sans-serif;
     font-style: italic;
 }
 
-.searchBarContainer_underInput {
+.underInput {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -18,15 +18,15 @@
     align-items: center;
 }
 
-.searchBarContainer_leftSide {
+.leftSide {
     display: flex;
     align-items: center;
 }
 
-.searchBarContainer_leftSide-item {
+.leftSideItem {
     margin-right: 1em;
 }
 
-.searchBarContainer_input {
+.input {
     margin-top: 1em;
 }
