@@ -11,10 +11,10 @@
     text-decoration: none;
 }
 
-.filmCard__img {
+.filmCardImg {
     height: 350px;
 }
-.filmCard__body {
+.filmCardBody {
     display: flex;
     flex-wrap: wrap;
     margin: 0;
@@ -23,7 +23,7 @@
     font-style: italic;
 }
 
-.filmCard__title {
+.filmCardTitle {
     width: 75%;
     font-size: 1em;
     padding: 0;
@@ -32,7 +32,7 @@
     float: left;
 }
 
-.filmCard__year {
+.filmCardYear {
     width: 25%;
     margin-top: 5px;
     margin-bottom: 0;
@@ -45,10 +45,10 @@
     text-align: center;
 }
 
-.filmCard__genresList {
+.filmCardGenresList {
     margin: auto;
 }
 
-.filmCard__genres {
+.filmCardGenres {
     font-weight: bold;
 }
