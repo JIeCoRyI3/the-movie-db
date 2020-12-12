@@ -1,10 +1,10 @@
-import './App.css';
+import styles from './App.module.css';
 import React from 'react';
 
 function App() {
     return (
-        <div className="App">
-            <header className="App-header">
+        <div className={styles.App}>
+            <header className={styles.AppHeader}>
                 <p>Start template</p>
                 <button className="btn btn-primary">Bootstrap work!</button>
             </header>
