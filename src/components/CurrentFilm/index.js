@@ -1,3 +1,3 @@
-import CurrentFilmDescription from './currentFilmDescription.jsx';
+import CurrentFilmDescription from './CurrentFilmDescription';
 
 export default CurrentFilmDescription;
