@@ -1,4 +1,4 @@
-const filmCardMock = {
+export const filmCardMock = {
     poster_path: '/8wUCp1FFiZwq1AUIfNgbxu5hn4G.jpg',
     genres: [
         { id: 16, name: 'Animation' },
@@ -11,4 +11,3 @@ const filmCardMock = {
     release_date: '2000-06-16',
 };
 
-export default filmCardMock;
