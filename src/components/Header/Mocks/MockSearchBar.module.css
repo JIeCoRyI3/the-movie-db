@@ -1,0 +1,32 @@
+.searchBarContainer {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+}
+
+.title,
+.searchTitle {
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: italic;
+}
+
+.underInput {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1em;
+    align-items: center;
+}
+
+.leftSide {
+    display: flex;
+    align-items: center;
+}
+
+.leftSideItem {
+    margin-right: 1em;
+}
+
+.input {
+    margin-top: 1em;
+}
