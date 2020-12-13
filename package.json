@@ -18,7 +18,11 @@
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
+<<<<<<< HEAD
         "test": "react-scripts test",
+=======
+        "test": "jest --setupFiles ./src/setupTests.js",
+>>>>>>> 36a6015cb362104ca518ff7257f2e6a37d3fff1b
         "eject": "react-scripts eject"
     },
     "eslintConfig": {
@@ -40,9 +44,23 @@
         ]
     },
     "devDependencies": {
+<<<<<<< HEAD
         "eslint": "^7.15.0",
         "eslint-plugin-react": "^7.21.5",
         "husky": "^4.3.5",
+=======
+        "@babel/core": "^7.12.10",
+        "@babel/preset-env": "^7.12.10",
+        "@babel/preset-react": "^7.12.10",
+        "babel-jest": "^26.6.3",
+        "enzyme": "^3.11.0",
+        "enzyme-adapter-react-16": "^1.15.5",
+        "enzyme-to-json": "^3.6.1",
+        "eslint": "^7.15.0",
+        "eslint-plugin-react": "^7.21.5",
+        "husky": "^4.3.5",
+        "identity-obj-proxy": "^3.0.0",
+>>>>>>> 36a6015cb362104ca518ff7257f2e6a37d3fff1b
         "prettier": "2.2.1",
         "pretty-quick": "^3.1.0"
     },
@@ -50,5 +68,13 @@
         "hooks": {
             "pre-commit": "pretty-quick --staged"
         }
+<<<<<<< HEAD
+=======
+    },
+    "jest": {
+        "snapshotSerializers": [
+            "enzyme-to-json/serializer"
+        ]
+>>>>>>> 36a6015cb362104ca518ff7257f2e6a37d3fff1b
     }
 }

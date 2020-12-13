@@ -1,9 +1,17 @@
-import './App.css';
 import React from 'react';
-import SearchBar from '../components/SearchBar/index';
+import styles from './App.module.css';
+import MainContainer from '../components/MainContainer';
 
 function App() {
-    return <SearchBar />;
+    return (
+        <div className={styles.App}>
+            <MainContainer>
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+            </MainContainer>
+        </div>
+    );
 }
 
 export default App;
