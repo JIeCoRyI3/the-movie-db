@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './FilmCard.module.css';
 
-const FilmCard = () => {
+const FilmCard = (props) => {
     return (
         <div
             className={`card ${styles.filmCard}`}
@@ -15,10 +15,10 @@ const FilmCard = () => {
             />
             <div className={`card-body ${styles.filmCardBody}`}>
                 <h5 className={`card-title ${styles.filmCardTitle}`}>
-                    {'title'}
+                    {props.title}
                 </h5>
                 <p className={`card-text ${styles.filmCardYear}`}>
-                    {'release_date'}
+                    {props.release_date}
                 </p>
                 <p className={`card-text ${styles.filmCardGenresList}`}></p>
             </div>

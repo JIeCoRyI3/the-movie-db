@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './MainContainer.module.css';
 import FilmsContainer from '../FilmsContainer/';
-// import NotFound from '../NotFound';
 
 function MainContainer(props) {
     return (
@@ -13,10 +12,6 @@ function MainContainer(props) {
 }
 
 MainContainer.propTypes = {
-    // films: PropTypes.oneOfType([
-    //     PropTypes.arrayOf(PropTypes.object),
-    //     PropTypes.node,
-    // ]),
     films: PropTypes.arrayOf(PropTypes.object),
 };
 

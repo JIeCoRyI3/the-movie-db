@@ -4,6 +4,7 @@ import styles from './App.module.css';
 import FilmPage from '../components/FilmPage';
 import HomePage from '../components/HomePage';
 import NotFoundPage from '../components/NotFoundPage';
+import Footer from '../components/Footer';
 
 function App() {
     return (
@@ -14,6 +15,7 @@ function App() {
                     <Route path={'/film/:id'} component={FilmPage} exact />
                     <Route path={'*'} component={NotFoundPage} />
                 </Switch>
+                <Footer />
             </div>
         </BrowserRouter>
     );
