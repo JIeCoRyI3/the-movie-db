@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
 import styles from './App.module.css';
+import { ActionCreator } from '../store/actions/appActions';
 import FilmPage from '../components/FilmPage';
 import HomePage from '../components/HomePage';
 import NotFoundPage from '../components/NotFoundPage';
@@ -21,4 +23,15 @@ function App() {
     );
 }
 
-export default App;
+const mapStateToProps = (state) => {
+    return {
+        currMovie: state.currMovie,
+        moviesList: state.moviesList,
+    };
+};
+
+const mapDispatchToProps = {
+    reset: ActionCreator.reset,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
