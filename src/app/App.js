@@ -1,10 +1,20 @@
-import './App.css';
 import React from 'react';
-import CurrentFilmDescription from '../components/CurrentFilm/index'
+import styles from './App.module.css';
+import MainContainer from '../components/MainContainer';
+import Footer from '../components/Footer';
 
 function App() {
     return (
-        <CurrentFilmDescription />
+        <>
+            <div className={styles.App}>
+                <MainContainer>
+                    <div>1</div>
+                    <div>2</div>
+                    <div>3</div>
+                </MainContainer>
+            </div>
+            <Footer />
+        </>
     );
 }
 
