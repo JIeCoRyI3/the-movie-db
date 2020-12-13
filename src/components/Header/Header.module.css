@@ -1,0 +1,26 @@
+.headerComponent {
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+    margin-bottom: 25px;
+}
+
+.mainHeading {
+    font-style: italic;
+    font-size: 2rem;
+    margin-bottom: 0;
+}
+
+.headerAdditional {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 45px;
+}
+
+.goBack {
+    font-size: 1.3rem;
+}

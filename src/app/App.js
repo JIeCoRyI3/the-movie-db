@@ -1,39 +1,24 @@
 import React from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import styles from './App.module.css';
-import MainContainer from '../components/MainContainer';
-import { connect } from 'react-redux';
-import { ActionCreator } from '../store/actions/appActions';
-import SearchBar from '../components/SearchBar';
+import FilmPage from '../components/FilmPage';
+import HomePage from '../components/HomePage';
+import NotFoundPage from '../components/NotFoundPage';
 import Footer from '../components/Footer';
-import CurrentFilmDescription from '../components/CurrentFilm';
 
 function App() {
     return (
-        <>
-            <CurrentFilmDescription />
-            <SearchBar />
+        <BrowserRouter>
             <div className={styles.App}>
-                <MainContainer>
-                    <div>1</div>
-                    <div>2</div>
-                    <div>3</div>
-                </MainContainer>
+                <Switch>
+                    <Route path={'/'} component={HomePage} exact />
+                    <Route path={'/film/:id'} component={FilmPage} exact />
+                    <Route path={'*'} component={NotFoundPage} />
+                </Switch>
+                <Footer />
             </div>
-            <Footer />
-        </>
+        </BrowserRouter>
     );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    currMovie: state.currMovie,
-    moviesList: state.moviesList,
-  };
-};
-
-const mapDispatchToProps = {
-    reset: ActionCreator.reset
-};
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
