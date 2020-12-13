@@ -9,22 +9,20 @@ export default function SearchBar() {
                 className={styles.input}
                 placeholder="Enter movie title or genre"
             />
-            <div className={styles.underInput}>
+            <div className={styles.filterBarContainer}>
                 <div className={styles.leftSide}>
                     <h5
-                        className={
-                            styles.leftSideItem + ' ' + styles.searchTitle
-                        }
+                        className={`${styles.leftSideItem} ${styles.searchTitle}`}
                     >
                         Search by
                     </h5>
                     <button
-                        className={styles.leftSideItem + ' btn btn-primary'}
+                        className={`${styles.leftSideItem} btn btn-primary`}
                     >
                         Title
                     </button>
                     <button
-                        className={styles.leftSideItem + ' btn btn-primary'}
+                        className={`${styles.leftSideItem} btn btn-primary`}
                     >
                         Genre
                     </button>
