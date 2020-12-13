@@ -31,13 +31,9 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  reset(){
-    dispatch(ActionCreator.reset());
-  },
-
-});
-
+const mapDispatchToProps = {
+    reset: ActionCreator.reset
+};
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

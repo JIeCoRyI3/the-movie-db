@@ -1,7 +1,7 @@
 import { ActionType } from './actionType';
 
 export const ActionCreator = {
-	reset: () => ({
+	reset: (dispatch) => dispatch({
 		type: ActionType.RESET
 	}),
 
