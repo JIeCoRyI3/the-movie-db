@@ -1,11 +1,6 @@
 .footer {
-  height: 4em;
-  background-color: #33d1d6;
-  display: flex;
-  align-items: center;
-}
-
-.footer_logo {
-  height: 20px;
-  width: 200px;
+    height: 4em;
+    background-color: #33d1d6;
+    display: flex;
+    align-items: center;
 }
