@@ -1,6 +1,8 @@
 import styles from './App.module.css';
 import React from 'react';
 import MainContainer from '../components/MainContainer';
+import { connect } from 'react-redux';
+import { ActionCreator } from '../store/actions/appActions';
 
 function App() {
     return (
@@ -14,4 +16,20 @@ function App() {
     );
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    currMovie: state.currMovie,
+    moviesList: state.moviesList,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  reset(){
+    dispatch(ActionCreator.reset());
+  },
+
+});
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
