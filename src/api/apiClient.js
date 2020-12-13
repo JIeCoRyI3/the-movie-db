@@ -1,7 +1,7 @@
 let instance = null;
-export class ApiClient {
+export default class ApiClient {
     apiBase = 'https://api.themoviedb.org/3';
-    constructor(apiKey) {
+    constructor(apiKey = '') {
         this.apiKey = apiKey;
         instance = instance || this;
         return instance;
@@ -17,7 +17,7 @@ export class ApiClient {
         const res = await fetch(`${this.apiBase}${url}`, {
             method,
             body: data ? JSON.stringify(data) : null,
-            headers: headers || null,
+            headers: headers || {},
         });
 
         if (!res.ok) {
@@ -31,7 +31,7 @@ export class ApiClient {
         return await res;
     };
 
-    createFilterString(obj) {
+    createFilterString(obj = {}) {
         let filterString = `?api_key=${this.apiKey}&`;
         for (const [key, value] of Object.entries(obj)) {
             filterString += `${key}=${value}&`;
@@ -62,7 +62,7 @@ export class ApiClient {
     //  genres
     getAllGenres = async () =>
         await this.postGlobalResource(
-            `/genre/movie/list` + this.createFilterString(),
+            '/genre/movie/list' + this.createFilterString(),
             null,
             null,
             'GET',
@@ -70,7 +70,7 @@ export class ApiClient {
         );
     filterWithGenres = async (genreObj) =>
         await this.postGlobalResource(
-            `/discover/movie/` + this.createFilterString(genreObj),
+            '/discover/movie/' + this.createFilterString(genreObj),
             null,
             null,
             'GET',
