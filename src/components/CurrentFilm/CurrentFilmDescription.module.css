@@ -6,20 +6,20 @@
 }
 
 .poster {
-    width: 10em;
+    width: 10rem;
 }
 
 .detailsContainer {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    margin-left: 1em;
+    margin-left: 1rem;
 }
 
-.detailsContainerTitleContainer {
+.TitleContainer {
     display: flex;
 }
 
-.detailsContainerTitleContainerTitle {
-    margin-right: 1em;
+.TitleContainerFilmName {
+    margin-right: 1rem;
 }

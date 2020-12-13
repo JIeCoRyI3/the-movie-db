@@ -7,11 +7,12 @@ export default function CurrentFilmDescription() {
             <img
                 className={styles.poster}
                 src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/sWgBv7LV2PRoQgkxwlibdGXKz1S.jpg"
-                alt="what's wrong"
+                alt="The Mandalorian"
+                title="The Mandalorian"
             />
             <div className={styles.detailsContainer}>
-                <div className={styles.detailsContainerTitleContainer}>
-                    <h4 className={styles.detailsContainerTitleContainerTitle}>
+                <div className={styles.TitleContainer}>
+                    <h4 className={styles.TitleContainerFilmName}>
                         The Mandalorian
                     </h4>
                     <h4>8.5</h4>

@@ -8,6 +8,7 @@ import CurrentFilmDescription from '../components/CurrentFilm';
 function App() {
     return (
         <>
+            <CurrentFilmDescription />
             <SearchBar />
             <div className={styles.App}>
                 <MainContainer>
