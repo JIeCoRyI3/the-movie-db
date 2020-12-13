@@ -42,7 +42,7 @@ export default class ApiClient {
     //  filter
     filterBy = async (filterObj) =>
         await this.postGlobalResource(
-            '/search/movie' + this.createFilterString(filterObj),
+            `/search/movie${this.createFilterString(filterObj)}`,
             null,
             null,
             'GET',
@@ -52,7 +52,7 @@ export default class ApiClient {
     //  details
     detailsFromFilm = async (id) =>
         await this.postGlobalResource(
-            `/movie/${id}` + this.createFilterString(),
+            `/movie/${id}${this.createFilterString()}`,
             null,
             null,
             'GET',
@@ -62,7 +62,7 @@ export default class ApiClient {
     //  genres
     getAllGenres = async () =>
         await this.postGlobalResource(
-            '/genre/movie/list' + this.createFilterString(),
+            `/genre/movie/list${this.createFilterString()}`,
             null,
             null,
             'GET',
@@ -70,7 +70,7 @@ export default class ApiClient {
         );
     filterWithGenres = async (genreObj) =>
         await this.postGlobalResource(
-            '/discover/movie/' + this.createFilterString(genreObj),
+            `/discover/movie${this.createFilterString(genreObj)}`,
             null,
             null,
             'GET',
