@@ -35,4 +35,4 @@ function MockSearchBar() {
     );
 }
 
-export { MockSearchBar };
+export default MockSearchBar;
