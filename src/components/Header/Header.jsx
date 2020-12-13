@@ -9,9 +9,8 @@ function Header(props) {
     return (
         <section className={styles.headerComponent}>
             <header className={styles.header}>
-                <Link to="/" className={'btn btn-primary'}>
-                    <Logo />
-                </Link>
+                <Logo />
+
                 <Route
                     path="/film/:id"
                     render={() => (
