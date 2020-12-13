@@ -1,6 +1,8 @@
 import React from 'react';
 import styles from './App.module.css';
 import MainContainer from '../components/MainContainer';
+import { connect } from 'react-redux';
+import { ActionCreator } from '../store/actions/appActions';
 import SearchBar from '../components/SearchBar';
 import Footer from '../components/Footer';
 import CurrentFilmDescription from '../components/CurrentFilm';
@@ -22,4 +24,16 @@ function App() {
     );
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    currMovie: state.currMovie,
+    moviesList: state.moviesList,
+  };
+};
+
+const mapDispatchToProps = {
+    reset: ActionCreator.reset
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
