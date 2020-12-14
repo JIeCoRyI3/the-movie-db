@@ -6,13 +6,9 @@ import ApiClient from '../../api/apiClient';
 const api = new ApiClient();
 
 class FilmCard extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            genres: null,
-        };
-    }
+    state = {
+        genres: null,
+    };
 
     componentDidMount() {
         this.getGenres(this.props.genres);
