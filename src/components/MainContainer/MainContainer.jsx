@@ -3,11 +3,16 @@ import PropTypes from 'prop-types';
 import styles from './MainContainer.module.css';
 import FilmsContainer from '../FilmsContainer/';
 import { connect } from 'react-redux';
+import NotFound from '../NotFound';
 
 function MainContainer(props) {
     return (
         <main className={styles.mainContainer}>
-            {props.films ? <FilmsContainer films={props.films} /> : null}
+            {props.films.length > 0 ? (
+                <FilmsContainer films={props.films} />
+            ) : (
+                <NotFound />
+            )}
         </main>
     );
 }
