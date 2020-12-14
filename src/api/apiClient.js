@@ -44,6 +44,15 @@ export default class ApiClient {
             true
         );
 
+    getAllMovies = async () =>
+        await this.postGlobalResource(
+            `/discover/movie${this.createFilterString()}`,
+            null,
+            null,
+            'GET',
+            true
+        );
+
     //  details
     detailsFromFilm = async (id) =>
         await this.postGlobalResource(
