@@ -12,23 +12,23 @@ export default function SearchBar() {
             <div className={styles.filterBarContainer}>
                 <div className={styles.leftSide}>
                     <h5
-                        className={`${styles.leftSideItem} ${styles.searchTitle}`}
+                        className={`${styles.searchTitle} `}
                     >
                         Search by
                     </h5>
                     <button
-                        className={`${styles.leftSideItem} btn btn-primary`}
+                        className={`btn btn-primary ${styles.leftSideItem}`}
                     >
                         Title
                     </button>
                     <button
-                        className={`${styles.leftSideItem} btn btn-primary`}
+                        className={`btn btn-primary ${styles.leftSideItem}`}
                     >
                         Genre
                     </button>
                 </div>
                 <div>
-                    <button className="btn btn-primary">SEARCH</button>
+                    <button className={`btn btn-primary ${styles.rightSideItem}`}>SEARCH</button>
                 </div>
             </div>
         </div>

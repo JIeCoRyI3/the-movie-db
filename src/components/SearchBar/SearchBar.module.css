@@ -11,6 +11,7 @@
     color: white;
     text-align: left;
     font-size: 1.8em;
+    margin-right: 1em;
 }
 
 .filterBarContainer {
@@ -28,6 +29,10 @@
 
 .leftSideItem {
     margin-right: 1em;
+    font-size: 1.2em;
+}
+.rightSideItem{
+    font-size: 1.2em;
 }
 
 .input {
