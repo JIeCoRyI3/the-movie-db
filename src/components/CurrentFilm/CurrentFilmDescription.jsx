@@ -42,15 +42,21 @@ class CurrentFilmDescription extends Component {
                     title={this.state.title}
                 />
                 <div className={styles.detailsContainer}>
-                    <div className={styles.TitleContainer}>
-                        <h4 className={styles.TitleContainerFilmName}>
+                    <div className={styles.titleContainer}>
+                        <h4 className={styles.titleFilmName}>
                             {this.state.title}
                         </h4>
-                        <h4>{this.state.rating}</h4>
+                        <h4 className={styles.ratingFilmName}>
+                            {this.state.rating}
+                        </h4>
                     </div>
                     <div>
-                        <h5>{this.state.date}</h5>
-                        <h5>{this.state.description}</h5>
+                        <h5 className={styles.yearFilmName}>
+                            {this.state.date}
+                        </h5>
+                        <h5 className={styles.descriptionFilmName}>
+                            {this.state.description}
+                        </h5>
                     </div>
                 </div>
             </div>

@@ -12,14 +12,36 @@
 .detailsContainer {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    margin-left: 1rem;
+    margin-left: 1.5rem;
 }
 
-.TitleContainer {
+.titleContainer {
     display: flex;
 }
 
-.TitleContainerFilmName {
+.titleFilmName,
+.ratingFilmName {
+    font-size: 2em;
+    font-weight: bold;
     margin-right: 1rem;
+}
+
+.ratingFilmName {
+    border: 1px solid black;
+    padding: 0.3em;
+    border-radius: 50%;
+    margin-left: 1em;
+    margin-top: -0.2em;
+}
+
+.yearFilmName {
+    text-align: left;
+    font-size: 1.7em;
+    font-weight: bold;
+    margin-right: 1rem;
+}
+
+.descriptionFilmName {
+    font-size: 1.5em;
+    text-align: left;
 }
