@@ -33,9 +33,9 @@ function Header(props) {
               rating
             </button>
             <button
-              className={`btn btn-primary ${styles.sortRealise}`}
+              className={`btn btn-primary ${styles.sortRelease}`}
             >
-              realise date
+              release date
             </button>
           </div>
 
