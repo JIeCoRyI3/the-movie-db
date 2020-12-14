@@ -1,4 +1,4 @@
-import { RESET } from '../actions/appActions';
+import * as constants from '../actions/appActions';
 
 const initialState = {
     currMovie: null,
@@ -7,8 +7,8 @@ const initialState = {
 
 export const appReducer = (state = initialState, action) => {
     switch (action.type) {
-        case RESET: {
-            return initialState;
+        case constants.LOAD_MOVIES: {
+            return { ...state, ...action.payload };
         }
         default: {
             return state;
