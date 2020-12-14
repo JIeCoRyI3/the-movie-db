@@ -8,6 +8,9 @@
 .searchTitle {
     font-family: Arial, Helvetica, sans-serif;
     font-style: italic;
+    color: white;
+    text-align: left;
+    font-size: 1.8em;
 }
 
 .filterBarContainer {
@@ -29,4 +32,7 @@
 
 .input {
     margin-top: 1em;
+    height: 2.8em;
+    font-size: 1.3em;
+    padding-left: 2em;
 }

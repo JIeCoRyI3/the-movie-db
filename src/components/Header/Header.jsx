@@ -9,7 +9,7 @@ function Header(props) {
     return (
         <section className={styles.headerComponent}>
             <header className={styles.header}>
-                <Link to="/" className={'btn btn-primary'}>
+                <Link to="/" className={'btn btn-primary ' + styles.logoHeader}>
                     <Logo />
                 </Link>
                 <Route
@@ -17,7 +17,7 @@ function Header(props) {
                     render={() => (
                         <Link
                             to="/"
-                            className={styles.goBack + ' btn btn-primary'}
+                            className={'btn btn-primary ' + styles.goBack}
                         >
                             go back
                         </Link>
