@@ -4,16 +4,12 @@ import styles from './MainContainer.module.css';
 import FilmsContainer from '../FilmsContainer/';
 import { connect } from 'react-redux';
 
-class MainContainer extends React.Component {
-    render() {
-        const { films } = this.props;
-
-        return (
-            <main className={styles.mainContainer}>
-                {films ? <FilmsContainer films={films} /> : null}
-            </main>
-        );
-    }
+function MainContainer(props) {
+    return (
+        <main className={styles.mainContainer}>
+            {props.films ? <FilmsContainer films={props.films} /> : null}
+        </main>
+    );
 }
 
 MainContainer.propTypes = {

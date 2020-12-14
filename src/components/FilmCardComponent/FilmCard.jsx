@@ -18,8 +18,10 @@ class FilmCard extends React.Component {
         this.getGenres(this.props.genres);
     }
 
-    componentDidUpdate() {
-        this.getGenres(this.props.genres);
+    componentDidUpdate(prevProps) {
+        if (prevProps.genres !== this.props.genres) {
+            this.getGenres(this.props.genres);
+        }
     }
 
     getGenres = (ids) => {
