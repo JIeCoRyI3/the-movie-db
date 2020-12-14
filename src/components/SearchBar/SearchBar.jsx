@@ -53,7 +53,7 @@ class SearchBar extends React.Component {
                     </div>
                     <div>
                         <button
-                            className="btn btn-primary"
+                            className={`btn btn-primary ${styles.rightSideItem}`}
                             onClick={this.handleSearch}
                         >
                             SEARCH
