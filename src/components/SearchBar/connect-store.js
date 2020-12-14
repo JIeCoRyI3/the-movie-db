@@ -13,11 +13,10 @@ export const loadData = (filterObj) => {
             });
         } else if (filter === 'with_genres') {
             api.getAllGenres().then((res) => {
-                res.genres.forEach((genre) => {
-                    if (genre.name.includes(filterObj['with_genres'])) {
-                        filterObj['with_genres'] = genre.id;
-                    }
-                });
+                const genre = res.genres.find((genre) =>
+                    genre.name.includes(filterObj['with_genres'])
+                );
+                filterObj['with_genres'] = !genre ? null : genre.id;
 
                 api.filterWithGenres(filterObj).then((res) => {
                     dispatch(loadMovies(res.results));

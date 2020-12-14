@@ -22,14 +22,12 @@ class FilmCard extends React.Component {
 
     getGenres = (ids) => {
         api.getAllGenres().then((res) => {
-            let genres = '';
-            res.genres.forEach((genre) => {
-                if (ids.includes(genre.id)) {
-                    genres += genre.name + ' ';
-                }
-            });
+            const genres = res.genres
+                .filter((genre) => ids.includes(genre.id))
+                .map((genre) => genre.name);
+
             this.setState({
-                genres,
+                genres: genres.join(' '),
             });
         });
     };
@@ -41,10 +39,7 @@ class FilmCard extends React.Component {
                 style={{ width: 18 + 'rem' }}
             >
                 <img
-                    src={
-                        'https://image.tmdb.org/t/p/w500/' +
-                        this.props.poster_path
-                    }
+                    src={`https://image.tmdb.org/t/p/w500/${this.props.poster_path}`}
                     className={`card-img-top ${styles.filmCardImg}`}
                     alt="poster"
                 />

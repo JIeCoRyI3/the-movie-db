@@ -12,26 +12,25 @@ class MainContainer extends React.Component {
     }
 
     render() {
-        let content = <NotFound />;
-        if (this.props.films) {
-            if (this.props.films.length > 0) {
-                content = <FilmsContainer films={this.props.films} />;
-            }
-        }
-
-        return <main className={styles.mainContainer}>{content}</main>;
+        return (
+            <main className={styles.mainContainer}>
+                {this.props.films && this.props.films.length ? (
+                    <FilmsContainer films={this.props.films} />
+                ) : (
+                    <NotFound />
+                )}
+            </main>
+        );
     }
 }
 
 MainContainer.propTypes = {
-    films: PropTypes.arrayOf(PropTypes.object),
+    films: PropTypes.arrayOf(PropTypes.shape),
 };
 
-const mapStateToProps = (state) => {
-    return {
-        films: state.app.moviesList,
-    };
-};
+const mapStateToProps = (state) => ({
+    films: state.app.moviesList,
+});
 
 const mapDispatchToProps = {
     loadData,

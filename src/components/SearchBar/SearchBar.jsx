@@ -12,7 +12,7 @@ class SearchBar extends React.Component {
         localStorage.setItem('filter', 'with_genres');
     }
 
-    search = () => {
+    handleSearch = () => {
         const searchString = document.getElementById('searchInput').value;
         const filter = localStorage.getItem('filter');
         const filterObj = {
@@ -54,7 +54,7 @@ class SearchBar extends React.Component {
                     <div>
                         <button
                             className="btn btn-primary"
-                            onClick={this.search}
+                            onClick={this.handleSearch}
                         >
                             SEARCH
                         </button>
