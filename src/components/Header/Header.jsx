@@ -4,10 +4,21 @@ import PropTypes from 'prop-types';
 import Logo from '../Logo';
 import styles from './Header.module.css';
 import { connect } from 'react-redux';
+import { mapDispatchToProps, mapStateToProps } from '../../store/reducers/maps';
+import sortByReleaseDate from './sortBy/sortByReleaseDate';
+import sortByRating from './sortBy/sortByRating';
 
 class Header extends Component {
+    initSortDate = () => {
+        // console.log(this.props)
+        sortByReleaseDate(this.props);
+    };
+
+    initSortRating = () => {
+        sortByRating(this.props);
+    };
+
     render() {
-        console.log(this.props);
         return (
             <section className={styles.headerComponent}>
                 <header className={styles.header}>
@@ -34,10 +45,16 @@ class Header extends Component {
                 </div>
                 <div className={styles.headerSortBlock}>
                     <p className={styles.sortBlockTitle}>Sort by: </p>
-                    <button className={`btn btn-primary ${styles.sortRating}`}>
+                    <button
+                        onClick={this.initSortRating}
+                        className={`btn btn-primary ${styles.sortRating}`}
+                    >
                         rating
                     </button>
-                    <button className={`btn btn-primary ${styles.sortRelease}`}>
+                    <button
+                        onClick={this.initSortDate}
+                        className={`btn btn-primary ${styles.sortRelease}`}
+                    >
                         release date
                     </button>
                 </div>
@@ -54,10 +71,6 @@ Header.propTypes = {
     match: PropTypes.object,
 };
 
-const mapStateToProps = (state) => ({
-    films: state.app.moviesList,
-});
+// const withStore = connect(mapStateToProps, mapDispatchToProps);
 
-const withStore = connect(mapStateToProps);
-
-export default withStore(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

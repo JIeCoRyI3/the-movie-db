@@ -1,10 +1,3 @@
-import {
-    RESET,
-    SORT_BY_RATING_DOWN,
-    SORT_BY_RATING_UP,
-    SORT_BY_RELEASE_DATE_DOWN,
-    SORT_BY_RELEASE_DATE_UP,
-} from '../actions/appActions';
 import * as constants from '../actions/appActions';
 
 const _ = require('lodash');
@@ -21,7 +14,7 @@ export const appReducer = (state = initialState, action) => {
         case constants.LOAD_MOVIES: {
             return { ...state, ...action.payload };
         }
-        case SORT_BY_RATING_DOWN: {
+        case constants.SORT_BY_RATING_DOWN: {
             return {
                 ...state,
                 byRating: true,
@@ -31,14 +24,14 @@ export const appReducer = (state = initialState, action) => {
                 ).reverse(),
             };
         }
-        case SORT_BY_RATING_UP: {
+        case constants.SORT_BY_RATING_UP: {
             return {
                 ...state,
                 byRating: false,
                 moviesList: _.sortBy(state.moviesList, 'vote_average'),
             };
         }
-        case SORT_BY_RELEASE_DATE_DOWN: {
+        case constants.SORT_BY_RELEASE_DATE_DOWN: {
             return {
                 ...state,
                 byReleaseDate: true,
@@ -48,7 +41,7 @@ export const appReducer = (state = initialState, action) => {
                 ).reverse(),
             };
         }
-        case SORT_BY_RELEASE_DATE_UP: {
+        case constants.SORT_BY_RELEASE_DATE_UP: {
             return {
                 ...state,
                 byReleaseDate: false,
