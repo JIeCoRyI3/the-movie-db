@@ -19,7 +19,7 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    margin-bottom: 45px;
+    margin-bottom: 10px;
 }
 
 .goBack {
@@ -48,3 +48,18 @@
     outline: none;
 }
 
+.headerSortBlock{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.sortBlockTitle{
+    margin: 1em;
+    font-size: 1.5em;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.sortRating .sortRealise {
+
+}
