@@ -1,8 +1,8 @@
 .headerComponent {
-    background-color: #33d1d6;
+    background-image: url(https://besthqwallpapers.com/Temp/14-12-2020/blue-background-with-bubble-samsung-galaxy-note-10-samsung-stock-wallpapers-blue-abstract-background-samsung-besthqwallpapers.com-1920x1080.jpg);
     border-bottom: 1px solid black;
     box-sizing: border-box;
-    height: 28em;
+    height: 27em;
 }
 .header {
     display: flex;
@@ -55,8 +55,9 @@
 .headerSortBlock{
     justify-content: flex-end;
     display: flex;
-    width: 90%;
-    margin: auto;
+    width: 100%;
+    padding-right: 5%;
+    border-top: 1px solid black;
 }
 
 .sortBlockTitle{
