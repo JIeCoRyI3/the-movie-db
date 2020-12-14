@@ -25,11 +25,10 @@ class FilmCard extends React.Component {
     getGenres = (ids) => {
         api.getAllGenres().then((res) => {
             let genres = '';
-            res.genres.map((genre) => {
+            res.genres.forEach((genre) => {
                 if (ids.includes(genre.id)) {
                     genres += genre.name + ' ';
                 }
-                return genres;
             });
             this.setState({
                 genres,

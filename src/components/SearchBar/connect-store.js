@@ -12,12 +12,11 @@ export const loadData = (filterObj) => {
                 dispatch(loadMovies(res.results));
             });
         } else if (filter === 'with_genres') {
-            api.getAllGenres().then((genres) => {
-                genres.genres.map((genre) => {
+            api.getAllGenres().then((res) => {
+                res.genres.forEach((genre) => {
                     if (genre.name.includes(filterObj['with_genres'])) {
                         filterObj['with_genres'] = genre.id;
                     }
-                    return 1;
                 });
 
                 api.filterWithGenres(filterObj).then((res) => {
