@@ -1,15 +1,20 @@
 .headerComponent {
+    background-image: url(https://besthqwallpapers.com/Temp/14-12-2020/blue-background-with-bubble-samsung-galaxy-note-10-samsung-stock-wallpapers-blue-abstract-background-samsung-besthqwallpapers.com-1920x1080.jpg);
+    border-bottom: 1px solid black;
+    box-sizing: border-box;
+    height: 27em;
 }
 .header {
     display: flex;
     justify-content: space-between;
+
     padding: 15px 0;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
 }
 
 .mainHeading {
     font-style: italic;
-    font-size: 2rem;
+    font-size: 2.2rem;
     margin-bottom: 0;
 }
 
@@ -18,9 +23,74 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    margin-bottom: 45px;
+    margin-bottom: 10px;
 }
 
 .goBack {
     font-size: 1.3rem;
+}
+
+.logoHeader {
+    background: none;
+    outline: none;
+    font-size: 2em;
+    border: none;
+}
+
+.logoHeader:active, .logoHeader:focus{
+    background: none;
+    outline: 0!important;
+    outline-color: transparent!important;
+    outline-width: 0!important;
+    outline-style: none!important;
+    box-shadow: 0 0 0 0 rgba(0,123,255,0)!important;
+}
+
+.logoHeader:hover{
+    background: none;
+    border: none;
+    outline: none;
+}
+
+.headerSortBlock{
+    justify-content: flex-end;
+    display: flex;
+    width: 100%;
+    padding-right: 5%;
+    border-top: 1px solid black;
+}
+
+.sortBlockTitle{
+    margin: 0.8em;
+    font-size: 1.7em;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.sortRating, .sortRelease{
+    background: none;
+    border: none;
+    color: black;
+    font-size: 1.7em;
+    font-style: italic;
+    font-weight: bold;
+    padding-left: 1em;
+    padding-right: 0;
+}
+.sortRating:active, .sortRating:focus, .sortRelease:active, .sortRelease:focus {
+    background: none;
+    color: black;
+    outline: 0!important;
+    outline-color: transparent!important;
+    outline-width: 0!important;
+    outline-style: none!important;
+    box-shadow: 0 0 0 0 rgba(0,123,255,0)!important;
+
+}
+
+.sortRating:hover, .sortRelease:hover {
+    background: none;
+    border: none;
+    outline: none;
+    color: black;
 }

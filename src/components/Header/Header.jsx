@@ -9,7 +9,7 @@ function Header(props) {
     return (
         <section className={styles.headerComponent}>
             <header className={styles.header}>
-                <Link to="/" className={'btn btn-primary'}>
+                <Link to="/" className={`btn btn-primary ${styles.logoHeader}`}>
                     <Logo />
                 </Link>
                 <Route
@@ -17,7 +17,7 @@ function Header(props) {
                     render={() => (
                         <Link
                             to="/"
-                            className={styles.goBack + ' btn btn-primary'}
+                            className={`btn btn-primary ${styles.goBack}`}
                         >
                             go back
                         </Link>
@@ -25,6 +25,20 @@ function Header(props) {
                 />
             </header>
             <div className={styles.headerAdditional}>{props.children}</div>
+          <div className={ styles.headerSortBlock}>
+            <p className={ styles.sortBlockTitle}>Sort by: </p>
+            <button
+              className={`btn btn-primary ${styles.sortRating}`}
+            >
+              rating
+            </button>
+            <button
+              className={`btn btn-primary ${styles.sortRelease}`}
+            >
+              release date
+            </button>
+          </div>
+
         </section>
     );
 }
