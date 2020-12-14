@@ -25,7 +25,14 @@ class MainContainer extends React.Component {
 }
 
 MainContainer.propTypes = {
-    films: PropTypes.arrayOf(PropTypes.shape),
+    films: PropTypes.arrayOf(
+        PropTypes.shape({
+            poster_path: PropTypes.string,
+            genres_ids: PropTypes.arrayOf(PropTypes.number),
+            release_date: PropTypes.string,
+            title: PropTypes.string.isRequired,
+        })
+    ),
 };
 
 const mapStateToProps = (state) => ({
