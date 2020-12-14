@@ -1,46 +1,69 @@
 .filmCard {
+    font-size: 2rem;
     border-color: black;
+    border-radius: 10px;
     padding: 10px 25px;
     background-color: rgb(232, 246, 250);
-    height: 420px;
-    margin-bottom: 10px;
+    min-height: 500px;
+    margin: 5px;
 }
 
 .filmCard a:hover {
     text-decoration: none;
 }
 
+@media only screen and (min-width: 901px) {
+    .filmCard {
+        min-width: 30%;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .filmCard {
+        min-width: 48%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .filmCard {
+        min-width: 100%;
+    }
+}
+
 .filmCardImg {
+    object-fit: cover;
     height: 350px;
 }
+
 .filmCardBody {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
     margin: 0;
     padding: 0;
-    color: black;
+    color: rgb(9, 54, 73);
     font-style: italic;
 }
 
 .filmCardTitle {
-    width: 75%;
+    width: 100%;
     font-size: 1em;
     padding: 0;
     margin-top: 5px;
     margin-bottom: 0;
-    float: left;
 }
 
 .filmCardYear {
-    width: 25%;
+    width: 100%;
     margin-top: 5px;
     margin-bottom: 0;
     padding: 5px;
-    height: 25px;
+    height: 3.5rem;
     border: 1px solid black;
     border-radius: 5px;
     font-weight: bold;
-    line-height: 15px;
+    line-height: 2rem;
     text-align: center;
 }
 
