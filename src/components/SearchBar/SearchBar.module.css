@@ -1,5 +1,5 @@
 .searchBarContainer {
-    width: 80%;
+    width: 90%;
     display: flex;
     flex-direction: column;
 }
@@ -8,6 +8,11 @@
 .searchTitle {
     font-family: Arial, Helvetica, sans-serif;
     font-style: italic;
+    color: black;
+    text-align: left;
+    font-size: 2em;
+    font-weight: bold;
+    margin-right: 1em;
 }
 
 .filterBarContainer {
@@ -25,8 +30,23 @@
 
 .leftSideItem {
     margin-right: 1em;
+    font-size: 1.7em;
+    padding: 0.1em 1em;
+}
+.rightSideItem {
+    font-size: 1.6em;
+    padding: 0.2em 1em;
+}
+
+.searchTitle {
+    padding-left: 0;
+    margin: 0;
+    align-self: center;
 }
 
 .input {
     margin-top: 1em;
+    height: 2.8em;
+    font-size: 1.4em;
+    padding-left: 2em;
 }

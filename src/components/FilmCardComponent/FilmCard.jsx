@@ -27,7 +27,7 @@ class FilmCard extends React.Component {
                 .map((genre) => genre.name);
 
             this.setState({
-                genres: genres.join(' '),
+                genres: genres.join(', '),
             });
         });
     };
