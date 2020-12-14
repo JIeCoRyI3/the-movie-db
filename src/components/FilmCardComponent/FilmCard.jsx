@@ -11,7 +11,7 @@ class FilmCard extends React.Component {
     };
 
     componentDidMount() {
-        this.getGenres(this.props.genres);
+        this.getGenres(this.props.genre_ids);
     }
 
     componentDidUpdate(prevProps) {
@@ -32,9 +32,14 @@ class FilmCard extends React.Component {
         });
     };
 
+    route = () => {
+        window.location.href = `/film/${this.props.id}`;
+    };
+
     render() {
         return (
             <div
+                onClick={this.route}
                 className={`card ${styles.filmCard}`}
                 style={{ width: 18 + 'rem' }}
             >
@@ -45,7 +50,7 @@ class FilmCard extends React.Component {
                 />
                 <div className={`card-body ${styles.filmCardBody}`}>
                     <h5 className={`card-title ${styles.filmCardTitle}`}>
-                        {this.props.title}
+                        {this.props.original_title}
                     </h5>
                     <p className={`card-text ${styles.filmCardYear}`}>
                         {this.props.release_date}
@@ -62,7 +67,6 @@ class FilmCard extends React.Component {
 FilmCard.propTypes = {
     poster_path: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    genres: PropTypes.arrayOf(PropTypes.number).isRequired,
     release_date: PropTypes.string.isRequired,
 };
 

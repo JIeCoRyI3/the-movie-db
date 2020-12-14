@@ -17,7 +17,7 @@ function Header(props) {
                     render={() => (
                         <Link
                             to="/"
-                            className={styles.goBack + ' btn btn-primary'}
+                            className={`${styles.goBack} btn btn-primary`}
                         >
                             go back
                         </Link>
