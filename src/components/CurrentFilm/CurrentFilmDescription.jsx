@@ -11,15 +11,13 @@ export default function CurrentFilmDescription() {
                 title="The Mandalorian"
             />
             <div className={styles.detailsContainer}>
-                <div className={styles.TitleContainer}>
-                    <h4 className={styles.TitleContainerFilmName}>
-                        The Mandalorian
-                    </h4>
-                    <h4>8.5</h4>
+                <div className={styles.titleContainer}>
+                    <h4 className={styles.titleFilmName}>The Mandalorian</h4>
+                    <h4 className={styles.ratingFilmName}>8.5</h4>
                 </div>
                 <div>
-                    <h5>2019</h5>
-                    <h5>
+                    <h5 className={styles.yearFilmName}>2019</h5>
+                    <h5 className={styles.descriptionFilmName}>
                         After the fall of the Galactic Empire, lawlessness has
                         spread throughout the galaxy. A lone gunfighter makes
                         his way through the outer reaches, earning his keep as a

@@ -2,7 +2,7 @@
     background-image: url(https://besthqwallpapers.com/Temp/14-12-2020/blue-background-with-bubble-samsung-galaxy-note-10-samsung-stock-wallpapers-blue-abstract-background-samsung-besthqwallpapers.com-1920x1080.jpg);
     border-bottom: 1px solid black;
     box-sizing: border-box;
-    height: 27em;
+    max-height: 30em;
 }
 .header {
     display: flex;
@@ -27,7 +27,8 @@
 }
 
 .goBack {
-    font-size: 1.3rem;
+    font-size: 1.6em;
+    margin-right: 1.4em;
 }
 
 .logoHeader {
