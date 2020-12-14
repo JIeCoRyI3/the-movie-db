@@ -12,7 +12,7 @@ export default function SearchBar() {
             <div className={styles.filterBarContainer}>
                 <div className={styles.leftSide}>
                     <h5
-                        className={`${styles.searchTitle} `}
+                        className={styles.searchTitle}
                     >
                         Search by
                     </h5>

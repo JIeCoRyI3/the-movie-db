@@ -1,5 +1,5 @@
 .searchBarContainer {
-    width: 80%;
+    width: 90%;
     display: flex;
     flex-direction: column;
 }
@@ -8,9 +8,10 @@
 .searchTitle {
     font-family: Arial, Helvetica, sans-serif;
     font-style: italic;
-    color: white;
+    color: black;
     text-align: left;
-    font-size: 1.8em;
+    font-size: 2em;
+    font-weight: bold;
     margin-right: 1em;
 }
 
@@ -29,15 +30,17 @@
 
 .leftSideItem {
     margin-right: 1em;
-    font-size: 1.2em;
+    font-size: 1.4em;
+    padding: 0.2em 1em;
 }
 .rightSideItem{
-    font-size: 1.2em;
+    font-size: 1.4em;
+    padding: 0.2em 1em;
 }
 
 .input {
     margin-top: 1em;
     height: 2.8em;
-    font-size: 1.3em;
+    font-size: 1.4em;
     padding-left: 2em;
 }

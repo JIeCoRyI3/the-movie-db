@@ -1,10 +1,9 @@
 .filmCard {
     border-color: black;
-    border-radius: 10px;
-    box-shadow: 0 0 3px 2px gray;
     padding: 10px 25px;
     background-color: rgb(232, 246, 250);
     height: 420px;
+    margin-bottom: 10px;
 }
 
 .filmCard a:hover {
@@ -19,7 +18,7 @@
     flex-wrap: wrap;
     margin: 0;
     padding: 0;
-    color: rgb(9, 54, 73);
+    color: black;
     font-style: italic;
 }
 

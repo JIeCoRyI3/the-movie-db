@@ -1,9 +1,10 @@
 .mainContainer {
     background: #ebf6fc;
-    border-radius: 10px;
-    box-sizing: border-box;
     display: flex;
     flex-wrap: wrap;
     padding: 15px 20px;
     justify-content: space-between;
+    height: calc(100vh - 32em);
+
 }
+
