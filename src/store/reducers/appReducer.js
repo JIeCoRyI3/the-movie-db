@@ -5,6 +5,7 @@ import {
     SORT_BY_RELEASE_DATE_DOWN,
     SORT_BY_RELEASE_DATE_UP,
 } from '../actions/appActions';
+import * as constants from '../actions/appActions';
 
 const _ = require('lodash');
 
@@ -17,8 +18,8 @@ const initialState = {
 
 export const appReducer = (state = initialState, action) => {
     switch (action.type) {
-        case RESET: {
-            return initialState;
+        case constants.LOAD_MOVIES: {
+            return { ...state, ...action.payload };
         }
         case SORT_BY_RATING_DOWN: {
             return {
