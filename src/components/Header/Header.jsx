@@ -3,6 +3,7 @@ import { Route, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Logo from '../Logo';
 import styles from './Header.module.css';
+import { connect } from 'react-redux';
 
 class Header extends Component {
     render() {
@@ -44,6 +45,7 @@ class Header extends Component {
         );
     }
 }
+
 Header.propTypes = {
     children: PropTypes.oneOfType([
         PropTypes.arrayOf(PropTypes.object),
@@ -52,4 +54,10 @@ Header.propTypes = {
     match: PropTypes.object,
 };
 
-export { Header };
+const mapStateToProps = (state) => ({
+    films: state.app.moviesList,
+});
+
+const withStore = connect(mapStateToProps);
+
+export default withStore(Header);
