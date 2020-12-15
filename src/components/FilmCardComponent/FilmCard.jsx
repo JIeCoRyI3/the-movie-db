@@ -49,7 +49,7 @@ class FilmCard extends React.Component {
                 <img
                     src={`https://image.tmdb.org/t/p/w500/${this.props.poster_path}`}
                     className={`card-img-top ${styles.filmCardImg}`}
-                    alt="poster"
+                    alt={`Poster of "${this.props.original_title}"`}
                 />
                 <div className={`card-body ${styles.filmCardBody}`}>
                     <h5 className={`card-title ${styles.filmCardTitle}`}>
