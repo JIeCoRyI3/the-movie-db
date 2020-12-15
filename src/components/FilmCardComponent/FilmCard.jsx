@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
 import styles from './FilmCard.module.css';
 import ApiClient from '../../api/apiClient';
@@ -32,14 +33,16 @@ class FilmCard extends React.Component {
         });
     };
 
-    route = () => {
-        window.location.href = `/film/${this.props.id}`;
+    handleRoute = () => {
+        if (this.props.id) {
+            this.props.history.push(`/film/${this.props.id}`);
+        }
     };
 
     render() {
         return (
             <div
-                onClick={this.route}
+                onClick={this.handleRoute}
                 className={`card ${styles.filmCard}`}
                 style={{ width: 18 + 'rem' }}
             >
@@ -70,4 +73,4 @@ FilmCard.propTypes = {
     release_date: PropTypes.string.isRequired,
 };
 
-export default FilmCard;
+export default withRouter(FilmCard);

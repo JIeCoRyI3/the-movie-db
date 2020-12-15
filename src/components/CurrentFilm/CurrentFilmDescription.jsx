@@ -16,12 +16,23 @@ class CurrentFilmDescription extends Component {
         this.getMovie(id);
     }
 
-    getMovie = (id) => {
-        api.detailsFromFilm(id).then((data) => {
+    componentDidUpdate(prevProps) {
+        if (this.props.match.params.id !== prevProps.match.params.id) {
+            const id = this.props.match.params.id;
+            this.getMovie(id);
+        }
+    }
+
+    getMovie = async (id) => {
+        try {
+            const response = await api.detailsFromFilm(id);
+
             this.setState({
-                filmData: data,
+                filmData: response,
             });
-        });
+        } catch (error) {
+            this.props.history.push(`/`);
+        }
     };
 
     render() {
