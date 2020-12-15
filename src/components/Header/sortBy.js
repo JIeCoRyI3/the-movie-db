@@ -1,7 +1,5 @@
 const sortByRating = (props) => {
-    return props.byReleaseDate
-        ? props.sortByRatingUp()
-        : props.sortByRatingDown();
+    return props.byRating ? props.sortByRatingUp() : props.sortByRatingDown();
 };
 
 const sortByReleaseDate = (props) => {
