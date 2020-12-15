@@ -7,11 +7,7 @@ const api = new ApiClient();
 
 class CurrentFilmDescription extends Component {
     state = {
-        title: null,
-        rating: null,
-        date: null,
-        description: null,
-        poster: null,
+        filmData: {},
     };
 
     componentDidMount() {
@@ -23,39 +19,41 @@ class CurrentFilmDescription extends Component {
     getMovie = (id) => {
         api.detailsFromFilm(id).then((data) => {
             this.setState({
-                title: data.original_title,
-                rating: data.vote_average,
-                date: data.release_date,
-                description: data.overview,
-                poster: data.poster_path,
+                filmData: data,
             });
         });
     };
 
     render() {
+        const {
+            original_title,
+            vote_average,
+            release_date,
+            overview,
+            poster_path,
+        } = this.state.filmData;
+
         return (
             <div className={styles.currentFilmContainer}>
                 <img
                     className={styles.poster}
-                    src={`https://image.tmdb.org/t/p/w500/${this.state.poster}`}
-                    alt={this.state.title}
-                    title={this.state.title}
+                    src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
+                    alt={original_title}
+                    title={original_title}
                 />
                 <div className={styles.detailsContainer}>
                     <div className={styles.titleContainer}>
                         <h4 className={styles.titleFilmName}>
-                            {this.state.title}
+                            {original_title}
                         </h4>
                         <h4 className={styles.ratingFilmName}>
-                            {this.state.rating}
+                            {vote_average}
                         </h4>
                     </div>
                     <div>
-                        <h5 className={styles.yearFilmName}>
-                            {this.state.date}
-                        </h5>
+                        <h5 className={styles.yearFilmName}>{release_date}</h5>
                         <h5 className={styles.descriptionFilmName}>
-                            {this.state.description}
+                            {overview}
                         </h5>
                     </div>
                 </div>
