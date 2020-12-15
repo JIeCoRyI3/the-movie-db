@@ -1,4 +1,3 @@
-export const RESET = 'RESET';
 export const SORT_BY_RATING_DOWN = 'SORT_BY_RATING_DOWN';
 export const SORT_BY_RATING_UP = 'SORT_BY_RATING_UP';
 export const SORT_BY_RELEASE_DATE_DOWN = 'SORT_BY_RELEASE_DATE_DOWN';

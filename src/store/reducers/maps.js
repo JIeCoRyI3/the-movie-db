@@ -5,14 +5,12 @@ import {
     sortByReleaseDateDown,
 } from '../actions-creators/sortBy';
 
-const mapStateToProps = (state) => {
-    return {
-        currMovie: state.app.currMovie,
-        moviesList: state.app.moviesList,
-        byRating: state.app.byRating,
-        byReleaseDate: state.app.byReleaseDate,
-    };
-};
+const mapStateToProps = (state) => ({
+    currMovie: state.app.currMovie,
+    moviesList: state.app.moviesList,
+    byRating: state.app.byRating,
+    byReleaseDate: state.app.byReleaseDate,
+});
 
 const mapDispatchToProps = {
     sortByRatingDown,

@@ -1,6 +1,5 @@
 import * as constants from '../actions/appActions';
-
-const _ = require('lodash');
+import _ from 'lodash';
 
 const initialState = {
     currMovie: null,
