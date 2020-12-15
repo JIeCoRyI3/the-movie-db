@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
 import styles from './FilmCard.module.css';
 import ApiClient from '../../api/apiClient';
@@ -11,7 +12,7 @@ class FilmCard extends React.Component {
     };
 
     componentDidMount() {
-        this.getGenres(this.props.genres);
+        this.getGenres(this.props.genre_ids);
     }
 
     componentDidUpdate(prevProps) {
@@ -32,9 +33,16 @@ class FilmCard extends React.Component {
         });
     };
 
+    handleRoute = () => {
+        if (this.props.id) {
+            this.props.history.push(`/film/${this.props.id}`);
+        }
+    };
+
     render() {
         return (
             <div
+                onClick={this.handleRoute}
                 className={`card ${styles.filmCard}`}
                 style={{ width: 18 + 'rem' }}
             >
@@ -45,7 +53,7 @@ class FilmCard extends React.Component {
                 />
                 <div className={`card-body ${styles.filmCardBody}`}>
                     <h5 className={`card-title ${styles.filmCardTitle}`}>
-                        {this.props.title}
+                        {this.props.original_title}
                     </h5>
                     <p className={`card-text ${styles.filmCardYear}`}>
                         {this.props.release_date}
@@ -62,8 +70,7 @@ class FilmCard extends React.Component {
 FilmCard.propTypes = {
     poster_path: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    genres: PropTypes.arrayOf(PropTypes.number).isRequired,
     release_date: PropTypes.string.isRequired,
 };
 
-export default FilmCard;
+export default withRouter(FilmCard);

@@ -25,20 +25,15 @@ function Header(props) {
                 />
             </header>
             <div className={styles.headerAdditional}>{props.children}</div>
-          <div className={ styles.headerSortBlock}>
-            <p className={ styles.sortBlockTitle}>Sort by: </p>
-            <button
-              className={`btn btn-primary ${styles.sortRating}`}
-            >
-              rating
-            </button>
-            <button
-              className={`btn btn-primary ${styles.sortRelease}`}
-            >
-              release date
-            </button>
-          </div>
-
+            <div className={styles.headerSortBlock}>
+                <p className={styles.sortBlockTitle}>Sort by: </p>
+                <button className={`btn btn-primary ${styles.sortRating}`}>
+                    rating
+                </button>
+                <button className={`btn btn-primary ${styles.sortRelease}`}>
+                    release date
+                </button>
+            </div>
         </section>
     );
 }

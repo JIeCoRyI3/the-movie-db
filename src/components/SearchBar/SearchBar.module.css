@@ -13,7 +13,6 @@
     font-size: 2em;
     font-weight: bold;
     margin-right: 1em;
-
 }
 
 .filterBarContainer {
@@ -34,12 +33,12 @@
     font-size: 1.7em;
     padding: 0.1em 1em;
 }
-.rightSideItem{
+.rightSideItem {
     font-size: 1.6em;
     padding: 0.2em 1em;
 }
 
-.searchTitle{
+.searchTitle {
     padding-left: 0;
     margin: 0;
     align-self: center;
