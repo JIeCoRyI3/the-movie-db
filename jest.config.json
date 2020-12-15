@@ -1,9 +1,10 @@
 {
     "collectCoverage": true,
-    "moduleFileExtensions": ["js", "mjs"],
+    "moduleFileExtensions": ["js", "mjs", "jsx"],
     "transform": {
         "^.+\\.js$": "babel-jest",
-        "^.+\\.mjs$": "babel-jest"
+        "^.+\\.mjs$": "babel-jest",
+        "^.+\\.jsx$": "babel-jest"
     },
     "testRegex": "((\\.|/*.)(test))\\.js?$",
     "moduleNameMapper": {
