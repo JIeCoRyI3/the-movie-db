@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import FilmCard from '../FilmCardComponent/';
 
 const FilmsContainer = (props) =>
-    props.films.map((film) => <FilmCard key={film.id} {...film} />);
+    props.films.map((film) => (
+        <FilmCard key={film.id} {...film} genres={props.genres} />
+    ));
 
 FilmsContainer.propTypes = {
     films: PropTypes.arrayOf(

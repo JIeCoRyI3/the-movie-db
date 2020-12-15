@@ -6,11 +6,15 @@ const initialState = {
     moviesList: null,
     byRating: false,
     byReleaseDate: false,
+    genresList: null,
 };
 
 export const appReducer = (state = initialState, action) => {
     switch (action.type) {
         case constants.LOAD_MOVIES: {
+            return { ...state, ...action.payload };
+        }
+        case constants.LOAD_GENRES: {
             return { ...state, ...action.payload };
         }
         case constants.SORT_BY_RATING_DOWN: {

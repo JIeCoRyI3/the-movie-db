@@ -2,9 +2,6 @@ import React from 'react';
 import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
 import styles from './FilmCard.module.css';
-import ApiClient from '../../api/apiClient';
-
-const api = new ApiClient();
 
 class FilmCard extends React.Component {
     state = {
@@ -22,14 +19,12 @@ class FilmCard extends React.Component {
     }
 
     getGenres = (ids) => {
-        api.getAllGenres().then((res) => {
-            const genres = res.genres
-                .filter((genre) => ids.includes(genre.id))
-                .map((genre) => genre.name);
+        const genres = this.props.genres
+            .filter((genre) => ids.includes(genre.id))
+            .map((genre) => genre.name);
 
-            this.setState({
-                genres: genres.join(', '),
-            });
+        this.setState({
+            genres: genres.join(', '),
         });
     };
 

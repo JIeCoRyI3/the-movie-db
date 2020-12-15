@@ -15,7 +15,10 @@ class MainContainer extends React.Component {
         return (
             <main className={styles.mainContainer}>
                 {this.props.films && this.props.films.length ? (
-                    <FilmsContainer films={this.props.films} />
+                    <FilmsContainer
+                        films={this.props.films}
+                        genres={this.props.genres}
+                    />
                 ) : (
                     <NotFound />
                 )}
@@ -37,6 +40,7 @@ MainContainer.propTypes = {
 
 const mapStateToProps = (state) => ({
     films: state.app.moviesList,
+    genres: state.app.genresList,
 });
 
 const mapDispatchToProps = {
