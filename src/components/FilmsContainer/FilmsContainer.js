@@ -2,37 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import FilmCard from '../FilmCardComponent/';
 
-const mockFilms = [
-    {
-        poster_path: '123123.jpg',
-        genres: [15, 28],
-        release_date: '2020-12-12',
-        title: 'TEST',
-    },
-];
-
-function FilmsContainer() {
-    return (
-        <>
-            1
-            {mockFilms.map((film, index) => (
-                <FilmCard
-                    key={index}
-                    poster_path={film.poster_path}
-                    genres={film.genres}
-                    release_date={film.release_date}
-                    title={film.title}
-                />
-            ))}
-        </>
-    );
-}
+const FilmsContainer = (props) =>
+    props.films.map((film) => <FilmCard key={film.id} {...film} />);
 
 FilmsContainer.propTypes = {
-    films: PropTypes.oneOfType([
-        PropTypes.arrayOf(PropTypes.node),
-        PropTypes.node,
-    ]),
+    films: PropTypes.arrayOf(
+        PropTypes.shape({
+            poster_path: PropTypes.string,
+            genres_ids: PropTypes.arrayOf(PropTypes.number),
+            release_date: PropTypes.string,
+            title: PropTypes.string.isRequired,
+        })
+    ),
 };
 
 export { FilmsContainer };

@@ -1,10 +1,7 @@
-let instance = null;
 export default class ApiClient {
     apiBase = 'https://api.themoviedb.org/3';
-    constructor(apiKey = '') {
-        this.apiKey = apiKey;
-        instance = instance || this;
-        return instance;
+    constructor() {
+        this.apiKey = 'a514a571ca8483723aa3c23e939e8e24';
     }
 
     postGlobalResource = async (
@@ -21,9 +18,7 @@ export default class ApiClient {
         });
 
         if (!res.ok) {
-            throw new Error(
-                `Could not fetch ${url}` + `, received ${res.status}`
-            );
+            throw new Error(`Could not fetch ${url}, received ${res.status}`);
         }
         if (jsonNeed) {
             return await res.json();
@@ -43,6 +38,15 @@ export default class ApiClient {
     filterBy = async (filterObj) =>
         await this.postGlobalResource(
             `/search/movie${this.createFilterString(filterObj)}`,
+            null,
+            null,
+            'GET',
+            true
+        );
+
+    getAllMovies = async () =>
+        await this.postGlobalResource(
+            `/discover/movie${this.createFilterString()}`,
             null,
             null,
             'GET',

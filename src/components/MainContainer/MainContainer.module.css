@@ -1,9 +1,31 @@
 .mainContainer {
     background: #ebf6fc;
-    border-radius: 10px;
     box-sizing: border-box;
     display: flex;
     flex-wrap: wrap;
     padding: 15px 20px;
     justify-content: space-between;
+}
+
+.mainContainer::after {
+    content: '';
+    margin: 5px;
+}
+
+@media only screen and (min-width: 901px) {
+    .mainContainer::after {
+        flex: 0 1 30%;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .mainContainer::after {
+        flex: 0 1 48%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .mainContainer::after {
+        flex: 0 1 100%;
+    }
 }
