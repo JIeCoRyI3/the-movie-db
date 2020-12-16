@@ -5,9 +5,10 @@ import ApiClient from '../../api/apiClient';
 
 const api = new ApiClient();
 
-class CurrentFilmDescription extends Component {
+export class CurrentFilmDescription extends Component {
     state = {
         filmData: {},
+        genres: null,
     };
 
     componentDidMount() {
@@ -23,6 +24,17 @@ class CurrentFilmDescription extends Component {
         }
     }
 
+    getGenres() {
+        const genresArray = this.state.filmData.genres;
+        if (genresArray) {
+            const genres = genresArray.map((genre) => genre.name);
+
+            this.setState({
+                genres: genres.join(', '),
+            });
+        }
+    }
+
     getMovie = async (id) => {
         try {
             const response = await api.detailsFromFilm(id);
@@ -30,6 +42,8 @@ class CurrentFilmDescription extends Component {
             this.setState({
                 filmData: response,
             });
+
+            this.getGenres();
         } catch (error) {
             this.props.history.push(`/`);
         }
@@ -63,9 +77,15 @@ class CurrentFilmDescription extends Component {
                     </div>
                     <div>
                         <h5 className={styles.yearFilmName}>{release_date}</h5>
-                        <h5 className={styles.descriptionFilmName}>
-                            {overview}
-                        </h5>
+                        <p className={styles.descriptionFilmName}>{overview}</p>
+                        <div className={styles.genresContainer}>
+                            <p className={styles.genresTitleFilmName}>
+                                Genres:
+                            </p>
+                            <p className={styles.genresFilmName}>
+                                {this.state.genres}
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
