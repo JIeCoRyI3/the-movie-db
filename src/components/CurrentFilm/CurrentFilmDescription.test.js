@@ -1,29 +1,30 @@
 import React from 'react';
-// import { MemoryRouter, Route } from 'react-router';
-// import renderer, { create } from 'react-test-renderer';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import { CurrentFilmDescription } from './CurrentFilmDescription';
 
+const match = {
+    params: {
+        id: 602211,
+    },
+};
+
+const history = {
+    push() {
+        return 1;
+    },
+};
+
 describe('<CurrentFilmDescription/>', () => {
-    const match = {
-        params: {
-            id: 602211,
-        },
-    };
+    let wrapper;
+    beforeEach(() => {
+        wrapper = mount(
+            <CurrentFilmDescription history={history} match={match} />
+        );
+    });
 
-    const history = {
-        push() {
-            return 1;
-        },
-    };
-
-    const response = {
-        original_title: 'asd',
-        vote_average: 'asd',
-        release_date: 'asd',
-        overview: 'asd',
-        poster_path: 'asd',
-    };
+    afterEach(() => {
+        wrapper = null;
+    });
 
     it('should render', () => {
         const component = shallow(
@@ -32,16 +33,43 @@ describe('<CurrentFilmDescription/>', () => {
         expect(component).toMatchSnapshot();
     });
 
-    it('should be', () => {
-        let wrapper = shallow(
-            <CurrentFilmDescription history={history} match={match} />
-        );
+    it('should be called getMovie', () => {
+        const instance = wrapper.instance();
 
-        const getMovieMock = jest.fn();
-        wrapper.instance().getMovie = getMovieMock.mockReturnValueOnce(
-            response
-        );
-        wrapper.update();
-        expect(getMovieMock).toBeCalledWith(602211);
+        const spy = jest.spyOn(instance, 'getMovie');
+        instance.componentDidMount();
+
+        expect(instance.getMovie).toHaveBeenCalled();
+        spy.mockRestore();
+    });
+
+    it('shoud be called getGenres', () => {
+        const filmData = {
+            genres: [{ name: '1' }, { name: '2' }, { name: '3' }],
+        };
+        const instance = wrapper.instance();
+
+        const spy = jest.spyOn(instance, 'getGenres');
+        instance.getGenres(filmData);
+
+        expect(instance.state.genres).toBe('1, 2, 3');
+        spy.mockRestore();
+    });
+
+    it('should be called getMovies after update', () => {
+        const instance = wrapper.instance();
+        const prevProps = {
+            match: {
+                params: {
+                    id: 602211222,
+                },
+            },
+        };
+
+        const spy = jest.spyOn(instance, 'getMovie');
+        instance.componentDidUpdate(prevProps);
+
+        expect(instance.getMovie).toHaveBeenCalled();
+        spy.mockRestore();
     });
 });

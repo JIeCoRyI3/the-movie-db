@@ -24,12 +24,13 @@ export class CurrentFilmDescription extends Component {
         }
     }
 
-    getGenres() {
-        const genresArray = this.state.filmData.genres;
+    getGenres(filmData) {
+        const genresArray = filmData.genres;
         if (genresArray) {
             const genres = genresArray.map((genre) => genre.name);
 
             this.setState({
+                filmData,
                 genres: genres.join(', '),
             });
         }
@@ -39,11 +40,7 @@ export class CurrentFilmDescription extends Component {
         try {
             const response = await api.detailsFromFilm(id);
 
-            this.setState({
-                filmData: response,
-            });
-
-            this.getGenres();
+            this.getGenres(response);
         } catch (error) {
             this.props.history.push(`/`);
         }
