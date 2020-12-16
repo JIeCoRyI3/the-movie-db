@@ -8,7 +8,11 @@ import {
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-class SearchBar extends React.Component {
+export class SearchBar extends React.Component {
+    state = {
+        value: '',
+    };
+
     searchByTitle = () => {
         this.pushGetParameters('query');
         this.props.loadDataByTitle(this.getUserInput('query'));
@@ -26,10 +30,16 @@ class SearchBar extends React.Component {
         );
     };
 
+    handleChange = (e) => {
+        const value = e.target.value;
+        this.setState({
+            value,
+        });
+    };
+
     getUserInput = (searchBy) => {
-        const searchString = document.getElementById('searchInput').value;
         return {
-            [searchBy]: searchString,
+            [searchBy]: this.state.value,
         };
     };
 
@@ -76,6 +86,7 @@ class SearchBar extends React.Component {
                     className={styles.input}
                     placeholder="Enter movie title or genre"
                     id="searchInput"
+                    onChange={this.handleChange}
                 />
                 <div className={styles.filterBarContainer}>
                     <div className={styles.leftSide}>
@@ -87,12 +98,14 @@ class SearchBar extends React.Component {
                         <button
                             className={`${styles.leftSideItem} btn btn-primary`}
                             onClick={this.searchByTitle}
+                            id="title"
                         >
                             Title
                         </button>
                         <button
                             className={`${styles.leftSideItem} btn btn-primary`}
                             onClick={this.searchByGenre}
+                            id="genre"
                         >
                             Genre
                         </button>
@@ -101,6 +114,7 @@ class SearchBar extends React.Component {
                         <button
                             className={`btn btn-primary ${styles.rightSideItem}`}
                             onClick={this.searchByGenreOrTitle}
+                            id="search"
                         >
                             SEARCH
                         </button>

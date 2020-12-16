@@ -5,7 +5,7 @@ const api = new ApiClient();
 
 export const loadDataByTitle = (filterObj) => {
     return (dispatch) => {
-        filterObj.query
+        return filterObj.query
             ? api.filterBy(filterObj).then((res) => {
                   dispatch(loadMovies(res.results.splice(0, 18)));
               })
@@ -17,14 +17,14 @@ export const loadDataByTitle = (filterObj) => {
 
 export const loadDataByGenre = (filterObj) => {
     return (dispatch) => {
-        filterObj.with_genres
+        return filterObj.with_genres
             ? api.getAllGenres().then((res) => {
                   const genre = res.genres.find((genre) =>
                       genre.name.includes(filterObj.with_genres)
                   );
                   filterObj.with_genres = !genre ? null : genre.id;
 
-                  api.filterWithGenres(filterObj).then((res) => {
+                  return api.filterWithGenres(filterObj).then((res) => {
                       dispatch(loadMovies(res.results.splice(0, 18)));
                   });
               })
@@ -44,7 +44,7 @@ export const loadDataByGenreOrTitle = (filterObj) => {
             with_genres: filterObj.title_and_genres,
         };
 
-        filterObj.title_and_genres
+        return filterObj.title_and_genres
             ? api.filterBy(filterObjForTitle).then((resByTitle) => {
                   api.getAllGenres().then((res) => {
                       const genre = res.genres.find((genre) =>
@@ -71,7 +71,7 @@ export const loadDataByGenreOrTitle = (filterObj) => {
     };
 };
 
-function createUniqueListFromTwoLists(firstList, secondList) {
+export function createUniqueListFromTwoLists(firstList, secondList) {
     return [...new Set(firstList.concat(secondList).map(JSON.stringify))].map(
         JSON.parse
     );

@@ -1,7 +1,64 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<SearchBar/> should render button 1`] = `
+<button
+  className="undefined btn btn-primary"
+  id="title"
+  onClick={[Function]}
+>
+  Title
+</button>
+`;
+
+exports[`<SearchBar/> should render input 1`] = `
+<input
+  id="searchInput"
+  onChange={[Function]}
+  placeholder="Enter movie title or genre"
+/>
+`;
+
 exports[`<SearchBar/> should renders 1`] = `
-<ContextConsumer>
-  <Component />
-</ContextConsumer>
+<div>
+  <h4>
+    Find your movies
+  </h4>
+  <input
+    id="searchInput"
+    onChange={[Function]}
+    placeholder="Enter movie title or genre"
+  />
+  <div>
+    <div>
+      <h5
+        className="undefined undefined"
+      >
+        Search by
+      </h5>
+      <button
+        className="undefined btn btn-primary"
+        id="title"
+        onClick={[Function]}
+      >
+        Title
+      </button>
+      <button
+        className="undefined btn btn-primary"
+        id="genre"
+        onClick={[Function]}
+      >
+        Genre
+      </button>
+    </div>
+    <div>
+      <button
+        className="btn btn-primary undefined"
+        id="search"
+        onClick={[Function]}
+      >
+        SEARCH
+      </button>
+    </div>
+  </div>
+</div>
 `;
