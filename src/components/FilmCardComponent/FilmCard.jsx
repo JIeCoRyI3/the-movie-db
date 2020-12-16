@@ -56,7 +56,7 @@ class FilmCard extends React.Component {
                         {this.props.original_title}
                     </h5>
                     <p className={`card-text ${styles.filmCardYear}`}>
-                        {this.props.release_date}
+                        {new Date(this.props.release_date).toLocaleDateString()}
                     </p>
                     <p className={`card-text ${styles.filmCardGenresList}`}>
                         {this.state.genres}
