@@ -1,15 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<NotFound/> render should render component with text 1`] = `
-<div>
-  <div />
-  <p>
-    NOT FOUND
-  </p>
-</div>
-`;
-
-exports[`<NotFound/> render should render text 1`] = `
+exports[`<NotFound/> render should render NotFound component 1`] = `
 <div>
   <div />
   <p>

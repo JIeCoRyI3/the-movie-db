@@ -1,20 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Header from '../Header/Header';
-import SearchBar from "../SearchBar/SearchBar";
-import NotFound from "../NotFound";
+import NotFoundPage from "../NotFoundPage";
 
 
 describe('< NotFoundPage /> render', () => {
 	it('should render component',  () => {
-		const tree = shallow(
-			<>
-				<Header>
-					<SearchBar />
-				</Header>
-				<NotFound />
-			</>
-		);
-		expect(tree).toMatchSnapshot();
+		const component = shallow( <NotFoundPage />);
+		expect(component).toMatchSnapshot();
 	})
 })
