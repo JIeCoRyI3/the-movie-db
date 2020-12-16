@@ -5,11 +5,59 @@
     padding: 10px 25px;
     background-color: rgb(232, 246, 250);
     min-height: 500px;
-    margin: 5px;
+    margin: 5px 0 20px;
+    cursor: pointer;
+    transition: 0.3s background;
+}
+.filmCard:hover {
+    background: rgb(167, 237, 255);
 }
 
 .filmCard a:hover {
     text-decoration: none;
+}
+
+.filmCardImg {
+    object-fit: cover;
+    height: 350px;
+}
+
+.filmCardBody {
+    /*display: flex;*/
+    /*flex-wrap: wrap;*/
+    /*align-items: center;*/
+    /*justify-content: center;*/
+    margin: 0;
+    padding: 0;
+    color: rgb(9, 54, 73);
+    font-style: italic;
+}
+
+.filmCardTitle {
+    width: 100%;
+    font-size: 1em;
+    padding: 10px 0;
+    margin-bottom: 0;
+}
+
+.filmCardYear {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 5px;
+    height: 3.5rem;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-weight: bold;
+    line-height: 2rem;
+    text-align: center;
+}
+
+.filmCardGenresList {
+    margin: auto;
+}
+
+.filmCardGenres {
+    font-weight: bold;
 }
 
 @media only screen and (min-width: 901px) {
@@ -28,49 +76,4 @@
     .filmCard {
         min-width: 100%;
     }
-}
-
-.filmCardImg {
-    object-fit: cover;
-    height: 350px;
-}
-
-.filmCardBody {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    margin: 0;
-    padding: 0;
-    color: rgb(9, 54, 73);
-    font-style: italic;
-}
-
-.filmCardTitle {
-    width: 100%;
-    font-size: 1em;
-    padding: 0;
-    margin-top: 5px;
-    margin-bottom: 0;
-}
-
-.filmCardYear {
-    width: 100%;
-    margin-top: 5px;
-    margin-bottom: 0;
-    padding: 5px;
-    height: 3.5rem;
-    border: 1px solid black;
-    border-radius: 5px;
-    font-weight: bold;
-    line-height: 2rem;
-    text-align: center;
-}
-
-.filmCardGenresList {
-    margin: auto;
-}
-
-.filmCardGenres {
-    font-weight: bold;
 }
