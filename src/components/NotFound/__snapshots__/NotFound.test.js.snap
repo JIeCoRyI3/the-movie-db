@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NotFound/> render should render NotFound component 1`] = `
+<div>
+  <div />
+  <p>
+    FILM NOT FOUND
+  </p>
+</div>
+`;
