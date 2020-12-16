@@ -4,7 +4,7 @@ exports[`<NotFound/> render should render NotFound component 1`] = `
 <div>
   <div />
   <p>
-    NOT FOUND
+    FILM NOT FOUND
   </p>
 </div>
 `;
