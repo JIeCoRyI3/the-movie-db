@@ -1,7 +1,21 @@
-.notFound {
-    font-size: 5rem;
-    color: #33d1d6;
-    margin: 10px;
-    font-style: italic;
+
+.container{
+    display: flex;
+    width: 100%;
+    height: calc(100vh - 34em);
+    background-color: #ebf6fc;
+}
+.emoji{
+    width: 30%;
+    background-image: url("../../assets/images/emoji_1.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.text{
+    width: 70%;
+    font-size: 6em;
     font-weight: bold;
+    font-style: italic;
+    text-align: center;
 }

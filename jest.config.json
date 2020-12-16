@@ -10,5 +10,6 @@
     "moduleNameMapper": {
         "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js",
         "\\.(jpg|png|jpeg|gif|ttf|eot|svg)$": "<rootDir>/__mocks__/fileMock.js"
-    }
+    },
+    "snapshotSerializers": ["enzyme-to-json/serializer"]
 }
