@@ -11,10 +11,10 @@ export class CurrentFilmDescription extends Component {
         genres: null,
     };
 
-    componentDidMount() {
+    async componentDidMount() {
         const id = this.props.match.params.id;
 
-        this.getMovie(id);
+        await this.getMovie(id);
     }
 
     componentDidUpdate(prevProps) {

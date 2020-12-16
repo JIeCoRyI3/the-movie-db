@@ -6,6 +6,7 @@
         "^.+\\.mjs$": "babel-jest",
         "^.+\\.jsx$": "babel-jest"
     },
+    "snapshotSerializers": ["enzyme-to-json/serializer"],
     "testRegex": "((\\.|/*.)(test))\\.js?$",
     "moduleNameMapper": {
         "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js",
