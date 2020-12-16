@@ -70,6 +70,11 @@ describe('async requests', () => {
         return create;
     });
 
+    afterEach(() => {
+        delete window.fetch;
+        delete window.dispatch;
+    });
+
     it('check loadDataByTitle get data from api', () => {
         const result = storeModule.loadDataByTitle({ query: 'test' });
         return result(window.dispatch).then((res) => {
