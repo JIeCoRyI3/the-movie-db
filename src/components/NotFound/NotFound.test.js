@@ -1,12 +1,15 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import NotFound from './NotFound';
 
 
 
 describe('<NotFound/> render', () => {
-    it('should has div', () => {
-        const component = shallow(<NotFound />);
-        expect(component.find('div')).toHaveLength(1);
+    it('should render component with text', () => {
+        const tree = shallow(
+          <div>
+            <div/>
+            <p>NOT FOUND</p>
+          </div>);
+        expect(tree).toMatchSnapshot();
     });
 });
