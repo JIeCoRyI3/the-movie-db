@@ -1,15 +1,22 @@
 import React from 'react';
 import Header from '../Header/';
-import MainContainer from '../MainContainer';
 import SearchBar from '../SearchBar/';
+import { Route, Switch } from 'react-router';
+import CurrentFilmDescription from '../CurrentFilm/CurrentFilmDescription';
 
 function HomePage() {
     return (
         <>
             <Header>
-                <SearchBar />
+                <Switch>
+                    <Route path={'/'} component={SearchBar} exact />
+                    <Route
+                        path={'/film/:id'}
+                        component={CurrentFilmDescription}
+                        exact
+                    />
+                </Switch>
             </Header>
-            <MainContainer />
         </>
     );
 }
