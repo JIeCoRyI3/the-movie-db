@@ -4,7 +4,7 @@ import styles  from './NotFound.module.css';
 function NotFound() {
     return <div className={styles.container}>
               <div className={styles.emoji}/>
-              <p className={styles.text}>NOT FOUND</p>
+              <p className={styles.text}>FILM NOT FOUND</p>
            </div>;
 }
 
