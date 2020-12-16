@@ -7,7 +7,6 @@ import NotFound from '../NotFound';
 import { loadData } from './connect-store';
 
 class MainContainer extends React.Component {
-
     render() {
         return (
             <main className={styles.mainContainer}>

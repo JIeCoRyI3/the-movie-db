@@ -1,5 +1,4 @@
-
-.container{
+.container {
     display: flex;
     flex-direction: column-reverse;
     justify-content: flex-end;
@@ -7,15 +6,15 @@
     height: calc(100vh - 34em);
     background-color: #ebf6fc;
 }
-.emoji{
+.emoji {
     height: 85%;
-    background-image: url("../../assets/images/emoji_1.png");
+    background-image: url('../../assets/images/emoji_1.png');
     background-repeat: no-repeat;
     background-size: 30%;
     background-position: center;
 }
 
-.text{
+.text {
     height: 15%;
     font-size: 4em;
     font-weight: bold;

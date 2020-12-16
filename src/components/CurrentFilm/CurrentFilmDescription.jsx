@@ -5,15 +5,16 @@ import ApiClient from '../../api/apiClient';
 
 const api = new ApiClient();
 
-class CurrentFilmDescription extends Component {
+export class CurrentFilmDescription extends Component {
     state = {
         filmData: {},
+        genres: null,
     };
 
-    componentDidMount() {
+    async componentDidMount() {
         const id = this.props.match.params.id;
 
-        this.getMovie(id);
+        await this.getMovie(id);
     }
 
     componentDidUpdate(prevProps) {
@@ -23,13 +24,23 @@ class CurrentFilmDescription extends Component {
         }
     }
 
+    getGenres(filmData) {
+        const genresArray = filmData.genres;
+        if (genresArray) {
+            const genres = genresArray.map((genre) => genre.name);
+
+            this.setState({
+                filmData,
+                genres: genres.join(', '),
+            });
+        }
+    }
+
     getMovie = async (id) => {
         try {
             const response = await api.detailsFromFilm(id);
 
-            this.setState({
-                filmData: response,
-            });
+            this.getGenres(response);
         } catch (error) {
             this.props.history.push(`/`);
         }
@@ -63,9 +74,15 @@ class CurrentFilmDescription extends Component {
                     </div>
                     <div>
                         <h5 className={styles.yearFilmName}>{release_date}</h5>
-                        <h5 className={styles.descriptionFilmName}>
-                            {overview}
-                        </h5>
+                        <p className={styles.descriptionFilmName}>{overview}</p>
+                        <div className={styles.genresContainer}>
+                            <p className={styles.genresTitleFilmName}>
+                                Genres:
+                            </p>
+                            <p className={styles.genresFilmName}>
+                                {this.state.genres}
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
