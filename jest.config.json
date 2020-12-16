@@ -1,5 +1,11 @@
 {
     "collectCoverage": true,
+    "collectCoverageFrom": [
+        "**/*.{js,jsx}",
+        "!**/node_modules/**",
+        "!**/vendor/**"
+    ],
+    "snapshotSerializers": ["enzyme-to-json/serializer"],
     "moduleFileExtensions": ["js", "mjs", "jsx"],
     "transform": {
         "^.+\\.js$": "babel-jest",
