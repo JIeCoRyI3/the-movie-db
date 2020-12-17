@@ -2,13 +2,11 @@ import React from 'react';
 import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
 import styles from './FilmCard.module.css';
-import ApiClient from '../../api/apiClient';
 import { formatDate } from '../../utils/utils';
 import placeholder from '../../assets/images/placeholder.png';
 
-const api = new ApiClient();
 
-export class FilmCard extends React.PureComponent {
+export class FilmCard extends React.Component {
     state = {
         genres: null,
         isPosterLoad: true,
@@ -25,14 +23,12 @@ export class FilmCard extends React.PureComponent {
     }
 
     getGenres = (ids) => {
-        api.getAllGenres().then((res) => {
-            const genres = res.genres
-                .filter((genre) => ids.includes(genre.id))
-                .map((genre) => genre.name);
-            genres.length = (genres.length > 3)? 3 : genres.length;
-            this.setState({
-                genres: genres.join(', '),
-            });
+        const genres = this.props.genres
+            .filter((genre) => ids.includes(genre.id))
+            .map((genre) => genre.name);
+
+        this.setState({
+            genres: genres.join(', '),
         });
     };
 

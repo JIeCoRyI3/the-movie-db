@@ -4,14 +4,48 @@ import styles from './MainContainer.module.css';
 import FilmsContainer from '../FilmsContainer/';
 import { connect } from 'react-redux';
 import NotFound from '../NotFound';
-import { loadData } from './connect-store';
+import {
+    loadDataByTitle,
+    loadDataByGenreOrTitle,
+    loadDataByGenre,
+} from '../SearchBar/connect-store';
+import { withRouter } from 'react-router';
 
 class MainContainer extends React.Component {
+    componentDidMount() {
+        this.searchBy = new URLSearchParams(this.props.location.search).get(
+            'searchBy'
+        );
+        this.input = new URLSearchParams(this.props.location.search).get(
+            'input'
+        );
+
+        if (this.searchBy) {
+            switch (this.searchBy) {
+                case 'title':
+                    this.props.loadDataByTitle({ query: this.input });
+                    break;
+                case 'genre':
+                    this.props.loadDataByGenre({ with_genres: this.input });
+                    break;
+                case 'genreOrTitle':
+                    this.props.loadDataByGenreOrTitle({
+                        title_and_genres: this.input,
+                    });
+                    break;
+                default:
+            }
+        }
+    }
+
     render() {
         return (
             <main className={styles.mainContainer}>
                 {this.props.films && this.props.films.length ? (
-                    <FilmsContainer films={this.props.films} />
+                    <FilmsContainer
+                        films={this.props.films}
+                        genres={this.props.genres}
+                    />
                 ) : (
                     <NotFound />
                 )}
@@ -33,12 +67,15 @@ MainContainer.propTypes = {
 
 const mapStateToProps = (state) => ({
     films: state.app.moviesList,
+    genres: state.app.genresList,
 });
 
 const mapDispatchToProps = {
-    loadData,
+    loadDataByGenre,
+    loadDataByTitle,
+    loadDataByGenreOrTitle,
 };
 
 const withStore = connect(mapStateToProps, mapDispatchToProps);
 
-export default withStore(MainContainer);
+export default withRouter(withStore(MainContainer));

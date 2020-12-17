@@ -1,10 +1,6 @@
 {
     "collectCoverage": true,
-    "collectCoverageFrom": [
-        "**/*.{js,jsx}",
-        "!**/node_modules/**",
-        "!**/vendor/**"
-    ],
+    "collectCoverageFrom": ["src/**/*.{js,jsx}"],
     "snapshotSerializers": ["enzyme-to-json/serializer"],
     "moduleFileExtensions": ["js", "mjs", "jsx"],
     "transform": {
@@ -12,11 +8,9 @@
         "^.+\\.mjs$": "babel-jest",
         "^.+\\.jsx$": "babel-jest"
     },
-    "snapshotSerializers": ["enzyme-to-json/serializer"],
     "testRegex": "((\\.|/*.)(test))\\.js?$",
     "moduleNameMapper": {
         "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js",
         "\\.(jpg|png|jpeg|gif|ttf|eot|svg)$": "<rootDir>/__mocks__/fileMock.js"
-    },
-    "snapshotSerializers": ["enzyme-to-json/serializer"]
+    }
 }
