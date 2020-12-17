@@ -9,8 +9,6 @@ function NotFound() {
           <div className={styles.emoji}>
             <img src = {emoji} alt={''}/>
           </div>
-            {/*<div className={styles.emoji} />*/}
-            {/*<p className={styles.text}>FILM NOT FOUND</p>*/}
         </div>
     );
 }

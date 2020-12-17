@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`< NotFoundPage /> render should render component 1`] = `
+exports[`<NotFoundPage /> render should render component 1`] = `
 <Fragment>
   <Connect(Header)>
-    <Connect(SearchBar) />
+    <withRouter(Connect(SearchBar)) />
   </Connect(Header)>
   <NotFound />
 </Fragment>
