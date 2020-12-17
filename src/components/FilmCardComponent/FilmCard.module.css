@@ -59,8 +59,8 @@
     height: 28%;
     margin: auto;
     font-weight: bold;
-    font-size: 90%;
-    padding: 0.5rem 0;
+    font-size: 85%;
+    padding: 0.25rem 0;
 }
 
 @media only screen and (min-width: 901px) {
