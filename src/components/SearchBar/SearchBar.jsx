@@ -15,6 +15,9 @@ export class SearchBar extends React.Component {
         );
 
         if (this.input) {
+            this.setState({
+                value: this.input,
+            });
             document.getElementById('searchInput').value = this.input;
         }
     }
