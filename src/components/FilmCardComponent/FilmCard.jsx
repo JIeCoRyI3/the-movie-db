@@ -6,7 +6,7 @@ import { formatDate } from '../../utils/utils';
 import placeholder from '../../assets/images/placeholder.png';
 
 
-export class FilmCard extends React.Component {
+export class FilmCard extends React.PureComponent {
     state = {
         genres: null,
         isPosterLoad: true,
@@ -26,7 +26,6 @@ export class FilmCard extends React.Component {
         const genres = this.props.genres
             .filter((genre) => ids.includes(genre.id))
             .map((genre) => genre.name);
-
         this.setState({
             genres: genres.join(', '),
         });

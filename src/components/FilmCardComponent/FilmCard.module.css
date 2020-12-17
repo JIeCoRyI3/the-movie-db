@@ -32,15 +32,13 @@
 }
 
 .filmCardTitleWrap {
-    margin: auto;
+    min-height: 50%;
 }
 
 .filmCardTitle {
-    min-height: 50%;
     width: 100%;
     font-size: 100%;
-    padding: 2% 0;
-    margin: auto;
+    padding-top: 5%;
 }
 
 .filmCardYear {
