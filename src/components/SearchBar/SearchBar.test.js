@@ -10,29 +10,33 @@ const historyMock = {
 };
 
 describe('<SearchBar/>', () => {
+    let component;
+    beforeEach(() => {
+        component = shallow(
+            <SearchBar
+                history={historyMock}
+                loadDataByTitle={storeModule.loadDataByTitle}
+                loadDataByGenre={storeModule.loadDataByGenre}
+                loadDataByGenreOrTitle={storeModule.loadDataByGenreOrTitle}
+                location={{ search: 'some' }}
+            />
+        );
+    });
+
     it('should renders', () => {
-        const component = shallow(<SearchBar />);
         expect(component).toMatchSnapshot();
     });
 
     it('should render button', () => {
-        const component = shallow(<SearchBar />);
         expect(component.find('#title')).toMatchSnapshot();
     });
 
     it('should render input', () => {
-        const component = shallow(<SearchBar />);
         expect(component.find('#searchInput')).toMatchSnapshot();
     });
 
     describe('searchByTitle', () => {
         it('should be called after click', () => {
-            const component = shallow(
-                <SearchBar
-                    history={historyMock}
-                    loadDataByTitle={storeModule.loadDataByTitle}
-                />
-            );
             const instance = component.instance();
             jest.spyOn(instance, 'pushGetParameters');
             component.find('#title').simulate('click');
@@ -42,12 +46,6 @@ describe('<SearchBar/>', () => {
 
     describe('searchByGenre', () => {
         it('should be called after click', () => {
-            const component = shallow(
-                <SearchBar
-                    history={historyMock}
-                    loadDataByGenre={storeModule.loadDataByGenre}
-                />
-            );
             const instance = component.instance();
             jest.spyOn(instance, 'pushGetParameters');
             component.find('#genre').simulate('click');
@@ -57,12 +55,6 @@ describe('<SearchBar/>', () => {
 
     describe('searchByGenreOrTitle', () => {
         it('should be called after click', () => {
-            const component = shallow(
-                <SearchBar
-                    history={historyMock}
-                    loadDataByGenreOrTitle={storeModule.loadDataByGenreOrTitle}
-                />
-            );
             const instance = component.instance();
             jest.spyOn(instance, 'pushGetParameters');
             component.find('#search').simulate('click');
