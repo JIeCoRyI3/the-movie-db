@@ -4,7 +4,7 @@ import styles from './LoaderComponent.module.css';
 function LoaderComponent() {
     return (
         <div className={styles.ldsDualRingParent}>
-            <div className={styles.ldsDualRing}></div>
+            <div className={styles.ldsDualRing} />
         </div>
     );
 }
