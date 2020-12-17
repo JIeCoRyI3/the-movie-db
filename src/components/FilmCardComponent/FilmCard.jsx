@@ -4,12 +4,14 @@ import PropTypes from 'prop-types';
 import styles from './FilmCard.module.css';
 import ApiClient from '../../api/apiClient';
 import { formatDate } from '../../utils/utils';
+import placeholder from '../../assets/images/placeholder.png';
 
 const api = new ApiClient();
 
 class FilmCard extends React.PureComponent {
     state = {
         genres: null,
+        isPosterLoad: true,
     };
 
     componentDidMount() {
@@ -40,6 +42,12 @@ class FilmCard extends React.PureComponent {
         }
     };
 
+    errorPosterHandler = () => {
+        this.setState({
+            isPosterLoad: false,
+        });
+    }
+
     render() {
         return (
             <div
@@ -49,9 +57,10 @@ class FilmCard extends React.PureComponent {
             >
                 <div className={styles.filmCardImgWrap}>
                     <img
-                      src={`https://image.tmdb.org/t/p/w500/${this.props.poster_path}`}
+                      onError={ this.errorPosterHandler }
+                      src={this.state.isPosterLoad ? `https://image.tmdb.org/t/p/w500/${this.props.poster_path}` : placeholder}
                       className={`card-img-top ${styles.filmCardImg}`}
-                      alt={`Poster of "${this.props.original_title}"`}
+                      alt={'Poster'}
                     />
                 </div>
 
