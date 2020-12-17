@@ -13,7 +13,7 @@ describe('<LoaderComponent/> render', () => {
         expect(wrapper).toMatchSnapshot();
     });
 
-    it('should have div with class ldsDualRing', () => {
-        expect(wrapper.find('.ldsDualRing')).toMatchSnapshot();
+    it('should have div with id #req', () => {
+        expect(wrapper.find('#req').exists).toBeTruthy();
     });
 });
