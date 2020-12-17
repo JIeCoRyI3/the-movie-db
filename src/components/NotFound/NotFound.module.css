@@ -11,15 +11,20 @@
 }
 
 .emoji img{
-    margin-top: 5em;
+    height: 100%;
 }
 
-.text {
+.text{
+    display: flex;
     height: 15%;
-    font-size: 4em;
+    margin: auto;
+}
+
+.text h2 {
+    margin-top: 2vh;
+    display: block;
+    font-size: 3.3vh;
     font-weight: bold;
     font-style: italic;
     text-align: center;
-    margin: auto;
-    line-height: 4em;
 }

@@ -5,7 +5,9 @@ import emoji from '../../assets/images/emoji_1.png'
 function NotFound() {
     return (
         <div className={styles.container}>
-          <h2 className={styles.text}>FILM NOT FOUND</h2>
+          <div className={styles.text}>
+            <h2>FILM NOT FOUND</h2>
+          </div>
           <div className={styles.emoji}>
             <img src = {emoji} alt={''}/>
           </div>
