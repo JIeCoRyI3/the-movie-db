@@ -79,18 +79,22 @@ export class CurrentFilmDescription extends Component {
                             {vote_average}
                         </h4>
                     </div>
-                    <div>
+                    <div className={styles.dateDescriptionGenre}>
                         <h5 className={styles.yearFilmName}>
                             {this.getDate()}
                         </h5>
-                        <p className={styles.descriptionFilmName}>{overview}</p>
-                        <div className={styles.genresContainer}>
-                            <p className={styles.genresTitleFilmName}>
-                                Genres:
+                        <div className={styles.descriptionGenre}>
+                            <p className={styles.descriptionFilmName}>
+                                {overview}
                             </p>
-                            <p className={styles.genresFilmName}>
-                                {this.state.genres}
-                            </p>
+                            <div className={styles.genresContainer}>
+                                <p className={styles.genresTitleFilmName}>
+                                    Genres:
+                                </p>
+                                <p className={styles.genresFilmName}>
+                                    {this.state.genres}
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
