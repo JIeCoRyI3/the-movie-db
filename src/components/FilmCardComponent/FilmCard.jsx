@@ -86,6 +86,8 @@ FilmCard.propTypes = {
     poster_path: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     release_date: PropTypes.string.isRequired,
+    genre_ids: PropTypes.arrayOf(PropTypes.number).isRequired,
+    genres: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default withRouter(FilmCard);
