@@ -7,14 +7,14 @@
     background-color: #ebf6fc;
 }
 .emoji {
-    height: 85%
+    height: 85%;
 }
 
-.emoji img{
+.emoji img {
     height: 90%;
 }
 
-.text{
+.text {
     display: flex;
     height: 15%;
     margin: auto;
