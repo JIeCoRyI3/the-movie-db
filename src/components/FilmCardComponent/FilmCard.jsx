@@ -8,7 +8,7 @@ import placeholder from '../../assets/images/placeholder.png';
 
 const api = new ApiClient();
 
-class FilmCard extends React.PureComponent {
+export class FilmCard extends React.PureComponent {
     state = {
         genres: null,
         isPosterLoad: true,
@@ -54,6 +54,7 @@ class FilmCard extends React.PureComponent {
                 onClick={this.handleRoute}
                 className={`card ${styles.filmCard}`}
                 style={{ width: 18 + 'rem' }}
+                id='filmCard'
             >
                 <div className={styles.filmCardImgWrap}>
                     <img
@@ -61,19 +62,26 @@ class FilmCard extends React.PureComponent {
                       src={this.state.isPosterLoad ? `https://image.tmdb.org/t/p/w500/${this.props.poster_path}` : placeholder}
                       className={`card-img-top ${styles.filmCardImg}`}
                       alt={'Poster'}
+                      id='filmCardImg'
                     />
                 </div>
 
                 <div className={`card-body ${styles.filmCardBody}`}>
                     <div className={styles.filmCardTitleWrap}>
-                        <h5 className={`card-title ${styles.filmCardTitle}`}>
+                        <h5 className={`card-title ${styles.filmCardTitle}`}
+                            id='filmCardTitle'
+                        >
                             {this.props.original_title}
                         </h5>
                     </div>
-                    <p className={`card-text ${styles.filmCardYear}`}>
+                    <p className={`card-text ${styles.filmCardYear}`}
+                        id='filmCardYear'
+                    >
                         {formatDate(this.props.release_date)}
                     </p>
-                    <p className={`card-text ${styles.filmCardGenresList}`}>
+                    <p className={`card-text ${styles.filmCardGenresList}`}
+                        id='filmCardGenresList'
+                    >
                         {this.state.genres}
                     </p>
                 </div>
