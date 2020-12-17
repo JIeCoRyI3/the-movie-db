@@ -2,9 +2,16 @@
 
 exports[`<NotFound/> render should render NotFound component 1`] = `
 <div>
-  <div />
-  <p>
-    FILM NOT FOUND
-  </p>
+  <div>
+    <h2>
+      FILM NOT FOUND
+    </h2>
+  </div>
+  <div>
+    <img
+      alt=""
+      src="test-file-stub"
+    />
+  </div>
 </div>
 `;
