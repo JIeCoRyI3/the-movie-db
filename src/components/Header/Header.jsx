@@ -5,7 +5,6 @@ import Logo from '../Logo';
 import styles from './Header.module.css';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '../../store/reducers/maps';
-// import { sortByRating, sortByReleaseDate } from './sortBy';
 
 export class Header extends Component {
     sortByRating = () => {
