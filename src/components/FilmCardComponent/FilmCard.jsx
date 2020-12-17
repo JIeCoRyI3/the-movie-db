@@ -7,7 +7,7 @@ import { formatDate } from '../../utils/utils';
 
 const api = new ApiClient();
 
-class FilmCard extends React.Component {
+class FilmCard extends React.PureComponent {
     state = {
         genres: null,
     };
@@ -27,7 +27,7 @@ class FilmCard extends React.Component {
             const genres = res.genres
                 .filter((genre) => ids.includes(genre.id))
                 .map((genre) => genre.name);
-
+            genres.length = (genres.length > 3)? 3 : genres.length;
             this.setState({
                 genres: genres.join(', '),
             });
@@ -47,15 +47,20 @@ class FilmCard extends React.Component {
                 className={`card ${styles.filmCard}`}
                 style={{ width: 18 + 'rem' }}
             >
-                <img
-                    src={`https://image.tmdb.org/t/p/w500/${this.props.poster_path}`}
-                    className={`card-img-top ${styles.filmCardImg}`}
-                    alt={`Poster of "${this.props.original_title}"`}
-                />
+                <div className={styles.filmCardImgWrap}>
+                    <img
+                      src={`https://image.tmdb.org/t/p/w500/${this.props.poster_path}`}
+                      className={`card-img-top ${styles.filmCardImg}`}
+                      alt={`Poster of "${this.props.original_title}"`}
+                    />
+                </div>
+
                 <div className={`card-body ${styles.filmCardBody}`}>
-                    <h5 className={`card-title ${styles.filmCardTitle}`}>
-                        {this.props.original_title}
-                    </h5>
+                    <div className={styles.filmCardTitleWrap}>
+                        <h5 className={`card-title ${styles.filmCardTitle}`}>
+                            {this.props.original_title}
+                        </h5>
+                    </div>
                     <p className={`card-text ${styles.filmCardYear}`}>
                         {formatDate(this.props.release_date)}
                     </p>
