@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Footer /> should be rendered 1`] = `
+<img
+  alt="logo"
+  src="test-file-stub"
+/>
+`;

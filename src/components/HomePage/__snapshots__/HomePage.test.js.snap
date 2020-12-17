@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Footer /> should be rendered 1`] = `
+<Fragment>
+  <Connect(Header)>
+    <Switch>
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/"
+      />
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/film/:id"
+      />
+    </Switch>
+  </Connect(Header)>
+</Fragment>
+`;
