@@ -9,6 +9,16 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 export class SearchBar extends React.Component {
+    componentDidMount() {
+        this.input = new URLSearchParams(this.props.location.search).get(
+            'input'
+        );
+
+        if (this.input) {
+            document.getElementById('searchInput').value = this.input;
+        }
+    }
+
     state = {
         value: '',
     };

@@ -14,7 +14,7 @@ class App extends React.Component {
     }
 
     render() {
-        return (
+        return this.props.genres ? (
             <BrowserRouter>
                 <div className={styles.App}>
                     <Switch>
@@ -26,6 +26,8 @@ class App extends React.Component {
                     <Footer />
                 </div>
             </BrowserRouter>
+        ) : (
+            <h1>Loading</h1>
         );
     }
 }

@@ -20,7 +20,9 @@ export const loadDataByGenre = (filterObj) => {
         if (filterObj.with_genres) {
             const genres = getState().app.genresList;
             const genre = genres.find((genre) =>
-                genre.name.includes(filterObj.with_genres)
+                genre.name
+                    .toLowerCase()
+                    .includes(filterObj.with_genres.toLowerCase())
             );
             filterObj.with_genres = !genre ? null : genre.id;
 
@@ -49,7 +51,9 @@ export const loadDataByGenreOrTitle = (filterObj) => {
             ? api.filterBy(filterObjForTitle).then((resByTitle) => {
                   const genres = getState().app.genresList;
                   const genre = genres.find((genre) =>
-                      genre.name.includes(filterObjForGenre.with_genres)
+                      genre.name
+                          .toLowerCase()
+                          .includes(filterObjForGenre.with_genres.toLowerCase())
                   );
                   filterObjForGenre.with_genres = !genre ? null : genre.id;
 
