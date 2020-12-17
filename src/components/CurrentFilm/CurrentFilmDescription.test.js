@@ -72,4 +72,15 @@ describe('<CurrentFilmDescription/>', () => {
         expect(instance.getMovie).toHaveBeenCalled();
         spy.mockRestore();
     });
+
+    it('should return date', () => {
+        const instance = wrapper.instance();
+        const spy = jest.spyOn(instance, 'getDate');
+        instance.state.filmData = {
+            release_date: '2002-08-28',
+        };
+
+        expect(spy()).toBe('28.08.2002');
+        spy.mockRestore();
+    });
 });

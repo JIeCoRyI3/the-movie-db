@@ -12,12 +12,14 @@ exports[`<CurrentFilmDescription/> should render 1`] = `
     </div>
     <div>
       <h5 />
-      <p />
       <div>
-        <p>
-          Genres:
-        </p>
         <p />
+        <div>
+          <p>
+            Genres:
+          </p>
+          <p />
+        </div>
       </div>
     </div>
   </div>

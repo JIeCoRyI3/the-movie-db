@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router';
 import styles from './CurrentFilmDescription.module.css';
 import ApiClient from '../../api/apiClient';
+import { formatDate } from '../../utils/utils';
 
 const api = new ApiClient();
 
@@ -46,11 +47,17 @@ export class CurrentFilmDescription extends Component {
         }
     };
 
+    getDate = () => {
+        const date = this.state.filmData.release_date;
+        if (date) {
+            return formatDate(date);
+        }
+    };
+
     render() {
         const {
             original_title,
             vote_average,
-            release_date,
             overview,
             poster_path,
         } = this.state.filmData;
@@ -72,16 +79,22 @@ export class CurrentFilmDescription extends Component {
                             {vote_average}
                         </h4>
                     </div>
-                    <div>
-                        <h5 className={styles.yearFilmName}>{release_date}</h5>
-                        <p className={styles.descriptionFilmName}>{overview}</p>
-                        <div className={styles.genresContainer}>
-                            <p className={styles.genresTitleFilmName}>
-                                Genres:
+                    <div className={styles.dateDescriptionGenre}>
+                        <h5 className={styles.yearFilmName}>
+                            {this.getDate()}
+                        </h5>
+                        <div className={styles.descriptionGenre}>
+                            <p className={styles.descriptionFilmName}>
+                                {overview}
                             </p>
-                            <p className={styles.genresFilmName}>
-                                {this.state.genres}
-                            </p>
+                            <div className={styles.genresContainer}>
+                                <p className={styles.genresTitleFilmName}>
+                                    Genres:
+                                </p>
+                                <p className={styles.genresFilmName}>
+                                    {this.state.genres}
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
