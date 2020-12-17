@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Header /> should render sort by rating button 1`] = `
+<button
+  className="btn btn-primary undefined"
+  id="rating"
+  onClick={[Function]}
+>
+  rating
+</button>
+`;
+
+exports[`<Header /> should render sort by release date button 1`] = `
+<button
+  className="btn btn-primary undefined"
+  id="releaseDate"
+  onClick={[Function]}
+>
+  release date
+</button>
+`;
+
+exports[`<Header /> should renders 1`] = `
+<section>
+  <header>
+    <Link
+      className="btn btn-primary undefined"
+      to="/"
+    >
+      <Logo />
+    </Link>
+    <Route
+      path="/film/:id"
+      render={[Function]}
+    />
+  </header>
+  <div />
+  <div>
+    <p>
+      Sort by: 
+    </p>
+    <button
+      className="btn btn-primary undefined"
+      id="rating"
+      onClick={[Function]}
+    >
+      rating
+    </button>
+    <button
+      className="btn btn-primary undefined"
+      id="releaseDate"
+      onClick={[Function]}
+    >
+      release date
+    </button>
+  </div>
+</section>
+`;
