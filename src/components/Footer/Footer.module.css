@@ -1,9 +1,8 @@
 .footer {
-    height: 4em;
+    height: 6.9em;
     background-color: rgb(131, 155, 193);
     display: flex;
     align-items: center;
-    margin-top: auto;
     border-top: 1px solid black;
     box-sizing: border-box;
 }
