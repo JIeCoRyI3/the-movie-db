@@ -2,18 +2,20 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router';
 import styles from './CurrentFilmDescription.module.css';
 import ApiClient from '../../api/apiClient';
+import { formatDate } from '../../utils/utils';
 
 const api = new ApiClient();
 
-class CurrentFilmDescription extends Component {
+export class CurrentFilmDescription extends Component {
     state = {
         filmData: {},
+        genres: null,
     };
 
-    componentDidMount() {
+    async componentDidMount() {
         const id = this.props.match.params.id;
 
-        this.getMovie(id);
+        await this.getMovie(id);
     }
 
     componentDidUpdate(prevProps) {
@@ -23,15 +25,32 @@ class CurrentFilmDescription extends Component {
         }
     }
 
+    getGenres(filmData) {
+        const genresArray = filmData.genres;
+        if (genresArray) {
+            const genres = genresArray.map((genre) => genre.name);
+
+            this.setState({
+                filmData,
+                genres: genres.join(', '),
+            });
+        }
+    }
+
     getMovie = async (id) => {
         try {
             const response = await api.detailsFromFilm(id);
 
-            this.setState({
-                filmData: response,
-            });
+            this.getGenres(response);
         } catch (error) {
             this.props.history.push(`/`);
+        }
+    };
+
+    getDate = () => {
+        const date = this.state.filmData.release_date;
+        if (date) {
+            return formatDate(date);
         }
     };
 
@@ -39,7 +58,6 @@ class CurrentFilmDescription extends Component {
         const {
             original_title,
             vote_average,
-            release_date,
             overview,
             poster_path,
         } = this.state.filmData;
@@ -61,11 +79,23 @@ class CurrentFilmDescription extends Component {
                             {vote_average}
                         </h4>
                     </div>
-                    <div>
-                        <h5 className={styles.yearFilmName}>{release_date}</h5>
-                        <h5 className={styles.descriptionFilmName}>
-                            {overview}
+                    <div className={styles.dateDescriptionGenre}>
+                        <h5 className={styles.yearFilmName}>
+                            {this.getDate()}
                         </h5>
+                        <div className={styles.descriptionGenre}>
+                            <p className={styles.descriptionFilmName}>
+                                {overview}
+                            </p>
+                            <div className={styles.genresContainer}>
+                                <p className={styles.genresTitleFilmName}>
+                                    Genres:
+                                </p>
+                                <p className={styles.genresFilmName}>
+                                    {this.state.genres}
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

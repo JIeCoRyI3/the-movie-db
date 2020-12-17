@@ -3,6 +3,7 @@ import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
 import styles from './FilmCard.module.css';
 import ApiClient from '../../api/apiClient';
+import { formatDate } from '../../utils/utils';
 
 const api = new ApiClient();
 
@@ -56,7 +57,7 @@ class FilmCard extends React.Component {
                         {this.props.original_title}
                     </h5>
                     <p className={`card-text ${styles.filmCardYear}`}>
-                        {this.props.release_date}
+                        {formatDate(this.props.release_date)}
                     </p>
                     <p className={`card-text ${styles.filmCardGenresList}`}>
                         {this.state.genres}

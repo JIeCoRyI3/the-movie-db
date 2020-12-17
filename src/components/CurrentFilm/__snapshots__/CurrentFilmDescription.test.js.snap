@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CurrentFilmDescription/> should render 1`] = `
+<div>
+  <img
+    src="https://image.tmdb.org/t/p/w500/undefined"
+  />
+  <div>
+    <div>
+      <h4 />
+      <h4 />
+    </div>
+    <div>
+      <h5 />
+      <div>
+        <p />
+        <div>
+          <p>
+            Genres:
+          </p>
+          <p />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

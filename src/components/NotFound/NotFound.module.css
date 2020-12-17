@@ -1,7 +1,25 @@
-.notFound {
-    font-size: 5rem;
-    color: #33d1d6;
-    margin: 10px;
-    font-style: italic;
+.container {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+    width: 100%;
+    height: calc(100vh - 34em);
+    background-color: #ebf6fc;
+}
+.emoji {
+    height: 85%;
+    background-image: url('../../assets/images/emoji_1.png');
+    background-repeat: no-repeat;
+    background-size: 30%;
+    background-position: center;
+}
+
+.text {
+    height: 15%;
+    font-size: 4em;
     font-weight: bold;
+    font-style: italic;
+    text-align: center;
+    margin: auto;
+    line-height: 4em;
 }

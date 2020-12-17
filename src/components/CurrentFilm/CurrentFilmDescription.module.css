@@ -2,28 +2,33 @@
     display: flex;
     font-family: Arial, Helvetica, sans-serif;
     font-style: italic;
-    width: 80%;
+    width: 92%;
 }
 
 .poster {
-    width: 10rem;
+    width: 30rem;
+    height: 45rem;
 }
 
 .detailsContainer {
     display: flex;
+    justify-content: space-between;
     flex-direction: column;
     margin-left: 1.5rem;
+    max-height: 12rem;
 }
 
 .titleContainer {
     display: flex;
+    justify-content: space-between;
 }
 
 .titleFilmName,
 .ratingFilmName {
-    font-size: 2em;
+    font-size: 3em;
     font-weight: bold;
     margin-right: 1rem;
+    text-align: left;
 }
 
 .ratingFilmName {
@@ -32,16 +37,42 @@
     border-radius: 50%;
     margin-left: 1em;
     margin-top: -0.2em;
+    height: 5.8rem;
 }
 
 .yearFilmName {
     text-align: left;
-    font-size: 1.7em;
+    font-size: 2.5em;
     font-weight: bold;
     margin-right: 1rem;
 }
 
 .descriptionFilmName {
-    font-size: 1.5em;
-    text-align: left;
+    font-size: 2.3rem;
+    text-align: justify;
+}
+
+.genresFilmName {
+    text-align: justify;
+}
+
+.genresTitleFilmName {
+    margin-right: 0.5rem;
+}
+
+.genresContainer {
+    display: flex;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.descriptionGenre {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 36em;
+}
+
+.dateDescriptionGenre {
+    min-height: 39em;
 }
