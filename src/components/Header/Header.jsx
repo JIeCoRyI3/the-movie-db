@@ -5,9 +5,23 @@ import Logo from '../Logo';
 import styles from './Header.module.css';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '../../store/reducers/maps';
-import { sortByRating, sortByReleaseDate } from './sortBy';
+// import { sortByRating, sortByReleaseDate } from './sortBy';
 
-class Header extends Component {
+export class Header extends Component {
+    sortByRating = () => {
+        const props = this.props;
+        return props.byRating
+            ? props.sortByRatingUp()
+            : props.sortByRatingDown();
+    };
+
+    sortByReleaseDate = () => {
+        const props = this.props;
+        return props.byReleaseDate
+            ? props.sortByReleaseDateUp()
+            : props.sortByReleaseDateDown();
+    };
+
     render() {
         return (
             <section className={styles.headerComponent}>
@@ -36,17 +50,15 @@ class Header extends Component {
                 <div className={styles.headerSortBlock}>
                     <p className={styles.sortBlockTitle}>Sort by: </p>
                     <button
-                        onClick={() => {
-                            sortByRating(this.props);
-                        }}
+                        id="rating"
+                        onClick={this.sortByRating}
                         className={`btn btn-primary ${styles.sortRating}`}
                     >
                         rating
                     </button>
                     <button
-                        onClick={() => {
-                            sortByReleaseDate(this.props);
-                        }}
+                        id="releaseDate"
+                        onClick={this.sortByReleaseDate}
                         className={`btn btn-primary ${styles.sortRelease}`}
                     >
                         release date
