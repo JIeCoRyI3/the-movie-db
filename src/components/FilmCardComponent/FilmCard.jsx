@@ -32,7 +32,12 @@ class FilmCard extends React.Component {
     handleRoute = () => {
         if (this.props.id) {
             this.props.history.push(`/film/${this.props.id}`);
+            this.scrollToCurrentFilm();
         }
+    };
+
+    scrollToCurrentFilm = () => {
+        document.documentElement.scrollTop = 0;
     };
 
     render() {
@@ -51,9 +56,14 @@ class FilmCard extends React.Component {
                     <h5 className={`card-title ${styles.filmCardTitle}`}>
                         {this.props.original_title}
                     </h5>
-                    <p className={`card-text ${styles.filmCardYear}`}>
-                        {formatDate(this.props.release_date)}
-                    </p>
+
+                    {!!this.props.release_date &&
+                    formatDate(this.props.release_date) ? (
+                        <p className={`card-text ${styles.filmCardYear}`}>
+                            {formatDate(this.props.release_date)}
+                        </p>
+                    ) : null}
+
                     <p className={`card-text ${styles.filmCardGenresList}`}>
                         {this.state.genres}
                     </p>
