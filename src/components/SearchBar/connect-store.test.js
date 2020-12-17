@@ -15,6 +15,18 @@ describe('async requests', () => {
             return 1;
         };
 
+        window.getState = () => {
+            return {
+                app: {
+                    genresList: [
+                        { name: 'Adventure' },
+                        { name: 'Horror' },
+                        { name: 'Some' },
+                    ],
+                },
+            };
+        };
+
         window.fetch = () => {
             return new Promise((resolve) => {
                 setTimeout(function () {
@@ -50,7 +62,7 @@ describe('async requests', () => {
 
         create = () => {
             const store = {
-                getState: jest.fn(() => ({})),
+                getState: window.getState,
                 dispatch: window.dispatch,
             };
             const next = jest.fn();
@@ -63,8 +75,9 @@ describe('async requests', () => {
         const createObject = create();
         store = createObject.store;
         jest.spyOn(store, 'dispatch');
-        createObject.invoke((dispatch) => {
+        createObject.invoke((dispatch, getState) => {
             dispatch({ type: 'TEST' });
+            getState();
         });
 
         return create;
@@ -73,6 +86,10 @@ describe('async requests', () => {
     afterEach(() => {
         delete window.fetch;
         delete window.dispatch;
+        delete window.getState;
+        create = null;
+        thunk = null;
+        store = null;
     });
 
     it('check loadDataByTitle get data from api', () => {
@@ -91,14 +108,14 @@ describe('async requests', () => {
 
     it('check loadDataByGenre get data from api', () => {
         const result = storeModule.loadDataByGenre({ with_genres: 'Adv' });
-        return result(window.dispatch).then((res) => {
+        return result(window.dispatch, window.getState).then((res) => {
             expect(store.dispatch).toHaveBeenCalled();
         });
     });
 
     it('check loadDataByGenre get all films from api if query empty', () => {
         const result = storeModule.loadDataByGenre({});
-        return result(window.dispatch).then((res) => {
+        return result(window.dispatch, window.getState).then((res) => {
             expect(store.dispatch).toHaveBeenCalled();
         });
     });
@@ -107,14 +124,14 @@ describe('async requests', () => {
         const result = storeModule.loadDataByGenreOrTitle({
             title_and_genres: 'Adv',
         });
-        return result(window.dispatch).then((res) => {
+        return result(window.dispatch, window.getState).then((res) => {
             expect(store.dispatch).toHaveBeenCalled();
         });
     });
 
     it('check loadDataByGenreOrTitle get all films from api if query empty', () => {
         const result = storeModule.loadDataByGenreOrTitle({});
-        return result(window.dispatch).then((res) => {
+        return result(window.dispatch, window.getState).then((res) => {
             expect(store.dispatch).toHaveBeenCalled();
         });
     });
