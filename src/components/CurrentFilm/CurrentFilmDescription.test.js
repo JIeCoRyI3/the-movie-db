@@ -86,10 +86,10 @@ describe('<CurrentFilmDescription/>', () => {
 
     it('should handle error poster', () => {
         const instance = wrapper.instance();
-        const mock = jest.fn()
-        instance.props = {isPosterLoad: mock()}
-        jest.spyOn(instance,'errorPosterHandler');
+        const mock = jest.fn();
+        instance.props = { isPosterLoad: mock() };
+        jest.spyOn(instance, 'errorPosterHandler');
         wrapper.find('#poster').simulate('error');
         expect(mock).toHaveBeenCalled();
-    })
+    });
 });

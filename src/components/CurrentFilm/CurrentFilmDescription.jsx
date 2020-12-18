@@ -3,7 +3,7 @@ import { withRouter } from 'react-router';
 import styles from './CurrentFilmDescription.module.css';
 import ApiClient from '../../api/apiClient';
 import { formatDate } from '../../utils/utils';
-import placeholder from "../../assets/images/placeholder.png";
+import placeholder from '../../assets/images/placeholder.png';
 
 const api = new ApiClient();
 
@@ -60,7 +60,7 @@ export class CurrentFilmDescription extends Component {
         this.setState({
             isPosterLoad: false,
         });
-    }
+    };
 
     render() {
         const {
@@ -76,9 +76,13 @@ export class CurrentFilmDescription extends Component {
                     className={styles.poster}
                     alt={original_title}
                     title={original_title}
-                    onError={ this.errorPosterHandler }
-                    src={this.state.isPosterLoad ? `https://image.tmdb.org/t/p/w500/${poster_path}` : placeholder}
-                    id='poster'
+                    onError={this.errorPosterHandler}
+                    src={
+                        this.state.isPosterLoad
+                            ? `https://image.tmdb.org/t/p/w500/${poster_path}`
+                            : placeholder
+                    }
+                    id="poster"
                 />
                 <div className={styles.detailsContainer}>
                     <div className={styles.titleContainer}>

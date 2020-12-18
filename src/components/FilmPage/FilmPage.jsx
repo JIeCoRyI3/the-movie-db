@@ -16,10 +16,7 @@ function FilmPage() {
 }
 
 FilmPage.propTypes = {
-    children: PropTypes.oneOfType([
-      PropTypes.element,
-      PropTypes.elementType,
-    ])
+    children: PropTypes.oneOfType([PropTypes.element, PropTypes.elementType]),
 };
 
 export { FilmPage };
