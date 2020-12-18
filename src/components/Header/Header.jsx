@@ -1,24 +1,56 @@
 import React, { Component } from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Route, Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Logo from '../Logo';
 import styles from './Header.module.css';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '../../store/reducers/maps';
+import getSearchParams from '../../utils/getSearchParams';
 
 export class Header extends Component {
-    sortByRating = () => {
-        const props = this.props;
-        return props.byRating
-            ? props.sortByRatingUp()
-            : props.sortByRatingDown();
+    componentDidMount = () => {
+        const a = getSearchParams(this.props.location.search);
+        console.log(a);
     };
 
-    sortByReleaseDate = () => {
+    sortByRating = () => {
         const props = this.props;
-        return props.byReleaseDate
-            ? props.sortByReleaseDateUp()
-            : props.sortByReleaseDateDown();
+        if (props.byRating) {
+            props.sortByRatingUp();
+            this.pushGetParameters('rating', 'asc');
+        } else {
+            props.sortByRatingDown();
+            this.pushGetParameters('rating', 'desc');
+        }
+    };
+
+    sortByDate = () => {
+        const props = this.props;
+        if (props.byReleaseDate) {
+            props.sortByReleaseDateUp();
+            this.pushGetParameters('date', 'asc');
+        } else {
+            props.sortByReleaseDateDown();
+            this.pushGetParameters('date', 'desc');
+        }
+    };
+
+    pushGetParameters = (sortBy, sortType) => {
+        const arrayOfParams = [];
+        const params = getSearchParams(this.props.location.search);
+
+        if (params.searchBy) {
+            arrayOfParams.push(`searchBy=${params.searchBy}`);
+        }
+        if (params.input) {
+            arrayOfParams.push(`input=${params.input}`);
+        }
+        arrayOfParams.push(`sortBy=${sortBy}`);
+        arrayOfParams.push(`sortType=${sortType}`);
+
+        const getParams = arrayOfParams.join('&');
+
+        this.props.history.push(`?${getParams}`);
     };
 
     render() {
@@ -57,7 +89,7 @@ export class Header extends Component {
                     </button>
                     <button
                         id="releaseDate"
-                        onClick={this.sortByReleaseDate}
+                        onClick={this.sortByDate}
                         className={`btn btn-primary ${styles.sortRelease}`}
                     >
                         release date
@@ -76,4 +108,4 @@ Header.propTypes = {
     match: PropTypes.object,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header));

@@ -10,6 +10,8 @@ const mapStateToProps = (state) => ({
     moviesList: state.app.moviesList,
     byRating: state.app.byRating,
     byReleaseDate: state.app.byReleaseDate,
+    films: state.app.moviesList,
+    genres: state.app.genresList,
 });
 
 const mapDispatchToProps = {

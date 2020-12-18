@@ -9,34 +9,78 @@ import {
     loadDataByGenreOrTitle,
     loadDataByGenre,
 } from '../SearchBar/connect-store';
+import {
+    sortByRatingDown,
+    sortByRatingUp,
+    sortByReleaseDateUp,
+    sortByReleaseDateDown,
+} from '../../store/actions-creators/sortBy';
 import { withRouter } from 'react-router';
+import { mapStateToProps } from '../../store/reducers/maps';
 
 class MainContainer extends React.Component {
-    componentDidMount() {
-        this.searchBy = new URLSearchParams(this.props.location.search).get(
-            'searchBy'
-        );
-        this.input = new URLSearchParams(this.props.location.search).get(
-            'input'
-        );
+    state = {
+        isAscending: null,
+        sortBy: null,
+    };
 
-        if (this.searchBy) {
-            switch (this.searchBy) {
-                case 'title':
-                    this.props.loadDataByTitle({ query: this.input });
-                    break;
-                case 'genre':
-                    this.props.loadDataByGenre({ with_genres: this.input });
-                    break;
-                case 'genreOrTitle':
-                    this.props.loadDataByGenreOrTitle({
-                        title_and_genres: this.input,
-                    });
-                    break;
-                default:
+    componentDidMount() {
+        const urlGetParams = this.props.location.search;
+        const isAscending = new URLSearchParams(urlGetParams).get('sortType');
+        const sortBy = new URLSearchParams(urlGetParams).get('sortBy');
+        this.searchBy = new URLSearchParams(urlGetParams).get('searchBy');
+        this.input = new URLSearchParams(urlGetParams).get('input');
+        this.setState({
+            isAscending: isAscending,
+            sortBy: sortBy,
+        });
+
+        const promiseGetMovies = new Promise((resolve) => {
+            if (this.searchBy) {
+                switch (this.searchBy) {
+                    case 'title':
+                        this.props.loadDataByTitle({ query: this.input });
+                        break;
+                    case 'genre':
+                        this.props.loadDataByGenre({ with_genres: this.input });
+                        break;
+                    case 'genreOrTitle':
+                        this.props.loadDataByGenreOrTitle({
+                            title_and_genres: this.input,
+                        });
+                        break;
+                    default:
+                }
             }
-        }
+            setTimeout(() => {
+                resolve('foo');
+            }, 300);
+        });
+
+        promiseGetMovies.then(() => {
+            if (sortBy === 'rating') {
+                this.sortByRating();
+            }
+
+            if (sortBy === 'date') {
+                this.sortByDate();
+            }
+        });
     }
+
+    sortByDate = () => {
+        const props = this.props;
+        return this.state.isAscending === 'asc'
+            ? props.sortByReleaseDateUp()
+            : props.sortByReleaseDateDown();
+    };
+
+    sortByRating = () => {
+        const props = this.props;
+        return this.state.isAscending === 'asc'
+            ? props.sortByRatingUp()
+            : props.sortByRatingDown();
+    };
 
     render() {
         return (
@@ -65,15 +109,14 @@ MainContainer.propTypes = {
     ),
 };
 
-const mapStateToProps = (state) => ({
-    films: state.app.moviesList,
-    genres: state.app.genresList,
-});
-
 const mapDispatchToProps = {
     loadDataByGenre,
     loadDataByTitle,
     loadDataByGenreOrTitle,
+    sortByRatingDown,
+    sortByRatingUp,
+    sortByReleaseDateUp,
+    sortByReleaseDateDown,
 };
 
 const withStore = connect(mapStateToProps, mapDispatchToProps);
