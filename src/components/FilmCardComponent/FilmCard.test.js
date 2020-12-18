@@ -22,19 +22,19 @@ describe('<FilmCard>', () => {
         expect(wrapper).toMatchSnapshot();
     });
 
-    it('should render img', () => {
+    it('should render image poster', () => {
         expect(wrapper.find('#filmCardImg')).toHaveLength(1);
     });
 
-    it('should render h5', () => {
+    it('should render film title', () => {
         expect(wrapper.find('#filmCardTitle')).toHaveLength(1);
     });
 
-    it('should render p (date)', () => {
+    it('should render date', () => {
         expect(wrapper.find('#filmCardYear')).toHaveLength(1);
     });
 
-    it('should render p (genres)', () => {
+    it('should render genres', () => {
         expect(wrapper.find('#filmCardGenresList')).toHaveLength(1);
     })
 
