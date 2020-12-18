@@ -7,7 +7,6 @@ import placeholder from '../../assets/images/placeholder.png';
 import { getSearchParams } from '../../utils/utils';
 
 
-
 export class FilmCard extends React.PureComponent {
     state = {
         genres: null,

@@ -3,12 +3,16 @@
 exports[`<CurrentFilmDescription/> should render 1`] = `
 <div>
   <img
+    id="poster"
+    onError={[Function]}
     src="https://image.tmdb.org/t/p/w500/undefined"
   />
   <div>
     <div>
       <h4 />
-      <h4 />
+      <div>
+        <h4 />
+      </div>
     </div>
     <div>
       <h5 />
