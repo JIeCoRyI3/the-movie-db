@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import styles from './FilmCard.module.css';
 import { formatDate } from '../../utils/utils';
 import placeholder from '../../assets/images/placeholder.png';
+import { getSearchParams } from '../../utils/utils';
 
 
 export class FilmCard extends React.PureComponent {
@@ -33,7 +34,12 @@ export class FilmCard extends React.PureComponent {
 
     handleRoute = () => {
         if (this.props.id) {
-            this.props.history.push(`/film/${this.props.id}`);
+            const urlParams = getSearchParams(this.props.location.search);
+            this.props.history.push(
+                `/film/${this.props.id}?searchBy=${urlParams.searchBy}${
+                    urlParams.input ? '&input=' + urlParams.input : ''
+                }`
+            );
             this.scrollToCurrentFilm();
         }
     };
