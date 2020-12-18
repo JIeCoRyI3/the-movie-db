@@ -38,6 +38,8 @@
     margin-left: 1em;
     margin-top: -0.2em;
     height: 5.8rem;
+    text-align: center;
+    min-width: 6.8rem;
 }
 
 .yearFilmName {

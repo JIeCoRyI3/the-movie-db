@@ -17,67 +17,66 @@ import {
 } from '../../store/actions-creators/sortBy';
 import { withRouter } from 'react-router';
 import { mapStateToProps } from '../../store/reducers/maps';
+import { getSearchParams } from '../../utils/utils';
 
 class MainContainer extends React.Component {
     state = {
         isAscending: null,
         sortBy: null,
+        sorted: false,
     };
 
-    componentDidMount() {
-        const urlGetParams = this.props.location.search;
-        const isAscending = new URLSearchParams(urlGetParams).get('sortType');
-        const sortBy = new URLSearchParams(urlGetParams).get('sortBy');
-        this.searchBy = new URLSearchParams(urlGetParams).get('searchBy');
-        this.input = new URLSearchParams(urlGetParams).get('input');
-        this.setState({
-            isAscending: isAscending,
-            sortBy: sortBy,
-        });
-
-        const promiseGetMovies = new Promise((resolve) => {
-            if (this.searchBy) {
-                switch (this.searchBy) {
-                    case 'title':
-                        this.props.loadDataByTitle({ query: this.input });
-                        break;
-                    case 'genre':
-                        this.props.loadDataByGenre({ with_genres: this.input });
-                        break;
-                    case 'genreOrTitle':
-                        this.props.loadDataByGenreOrTitle({
-                            title_and_genres: this.input,
-                        });
-                        break;
-                    default:
-                }
-            }
-            setTimeout(() => {
-                resolve('foo');
-            }, 300);
-        });
-
-        promiseGetMovies.then(() => {
-            if (sortBy === 'rating') {
+    componentDidUpdate = () => {
+        if (this.props.films && !this.state.sorted) {
+            this.setState({
+                sorted: true,
+            });
+            const urlParams = getSearchParams(this.props.location.search);
+            if (urlParams.sortBy === 'rating') {
                 this.sortByRating();
             }
 
-            if (sortBy === 'date') {
+            if (urlParams.sortBy === 'date') {
                 this.sortByDate();
             }
-        });
+        }
+    };
+
+    componentDidMount() {
+        const urlParams = getSearchParams(this.props.location.search);
+
+        if (urlParams.searchBy) {
+            switch (urlParams.searchBy) {
+                case 'title':
+                    this.props.loadDataByTitle({ query: urlParams.input });
+                    break;
+                case 'genre':
+                    this.props.loadDataByGenre({
+                        with_genres: urlParams.input,
+                    });
+                    break;
+                case 'genreOrTitle':
+                    this.props.loadDataByGenreOrTitle({
+                        title_and_genres: urlParams.input,
+                    });
+                    break;
+                default:
+            }
+        }
     }
 
     sortByDate = () => {
         const props = this.props;
-        return this.state.isAscending === 'asc'
+        const urlParams = getSearchParams(this.props.location.search);
+        return urlParams.sortType === 'asc'
             ? props.sortByReleaseDateUp()
             : props.sortByReleaseDateDown();
     };
 
     sortByRating = () => {
         const props = this.props;
-        return this.state.isAscending === 'asc'
+        const urlParams = getSearchParams(this.props.location.search);
+        return urlParams.sortType === 'asc'
             ? props.sortByRatingUp()
             : props.sortByRatingDown();
     };

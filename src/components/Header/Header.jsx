@@ -5,34 +5,66 @@ import Logo from '../Logo';
 import styles from './Header.module.css';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '../../store/reducers/maps';
-import getSearchParams from '../../utils/getSearchParams';
+import { getSearchParams } from '../../utils/utils';
 
 export class Header extends Component {
+    state = {
+        arrow: '',
+    };
+
     componentDidMount = () => {
-        const a = getSearchParams(this.props.location.search);
-        console.log(a);
+        const urlParams = getSearchParams(this.props.location.search);
+        console.log(urlParams);
+        if (urlParams.sortType === 'asc') {
+            this.setState({
+                arrow: '˄',
+            });
+        }
+        if (urlParams.sortType === 'desc') {
+            this.setState({
+                arrow: '˅',
+            });
+        }
     };
 
     sortByRating = () => {
         const props = this.props;
+        const sortBy = 'rating';
         if (props.byRating) {
             props.sortByRatingUp();
-            this.pushGetParameters('rating', 'asc');
+            this.ascendingOrDescendingSymbol(sortBy);
+            this.pushGetParameters(sortBy, 'asc');
         } else {
             props.sortByRatingDown();
-            this.pushGetParameters('rating', 'desc');
+            this.ascendingOrDescendingSymbol(sortBy);
+            this.pushGetParameters(sortBy, 'desc');
         }
     };
 
     sortByDate = () => {
         const props = this.props;
+        const sortBy = 'date';
         if (props.byReleaseDate) {
             props.sortByReleaseDateUp();
-            this.pushGetParameters('date', 'asc');
+            this.ascendingOrDescendingSymbol(sortBy);
+            this.pushGetParameters(sortBy, 'asc');
         } else {
             props.sortByReleaseDateDown();
-            this.pushGetParameters('date', 'desc');
+            this.ascendingOrDescendingSymbol(sortBy);
+            this.pushGetParameters(sortBy, 'desc');
         }
+    };
+
+    ascendingOrDescendingSymbol = (sortBy) => {
+        let arrow;
+        if (sortBy === 'date') {
+            arrow = this.props.byReleaseDate ? '˄' : '˅';
+        } else {
+            arrow = this.props.byRating ? '˄' : '˅';
+        }
+        this.setState({
+            arrow: arrow,
+        });
     };
 
     pushGetParameters = (sortBy, sortType) => {
@@ -53,7 +85,7 @@ export class Header extends Component {
         this.props.history.push(`?${getParams}`);
     };
 
-    render() {
+    render = () => {
         return (
             <section className={styles.headerComponent}>
                 <header className={styles.header}>
@@ -79,25 +111,27 @@ export class Header extends Component {
                     {this.props.children}
                 </div>
                 <div className={styles.headerSortBlock}>
-                    <p className={styles.sortBlockTitle}>Sort by: </p>
+                    <p
+                        className={styles.sortBlockTitle}
+                    >{`${this.state.arrow} Sort by:`}</p>
                     <button
                         id="rating"
                         onClick={this.sortByRating}
                         className={`btn btn-primary ${styles.sortRating}`}
                     >
-                        rating
+                        {`rating`}
                     </button>
                     <button
                         id="releaseDate"
                         onClick={this.sortByDate}
                         className={`btn btn-primary ${styles.sortRelease}`}
                     >
-                        release date
+                        {`release date`}
                     </button>
                 </div>
             </section>
         );
-    }
+    };
 }
 
 Header.propTypes = {
