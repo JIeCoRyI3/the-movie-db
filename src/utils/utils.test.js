@@ -1,4 +1,4 @@
-import { formatDate } from './utils';
+import { formatDate, getSearchParams } from './utils';
 
 describe('formatDate()', () => {
     it('Should return correct date', () => {
@@ -19,5 +19,15 @@ describe('formatDate()', () => {
 
     it('Should return empty string', () => {
         expect(formatDate('')).toBe('');
+    });
+});
+
+describe('getSearchParams()', () => {
+    it('Should return correct params', () => {
+        const searchMock = '?search=some&hit=test';
+        expect(getSearchParams(searchMock)).toEqual({
+            search: 'some',
+            hit: 'test',
+        });
     });
 });

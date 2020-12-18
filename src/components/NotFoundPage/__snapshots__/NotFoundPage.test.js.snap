@@ -2,9 +2,9 @@
 
 exports[`<NotFoundPage /> render should render component 1`] = `
 <Fragment>
-  <Connect(Header)>
+  <withRouter(Connect(Header))>
     <withRouter(Connect(SearchBar)) />
-  </Connect(Header)>
+  </withRouter(Connect(Header))>
   <NotFound />
 </Fragment>
 `;

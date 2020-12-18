@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import HomePage from './index';
 
-describe('<Footer />', () => {
+describe('<HomePage />', () => {
     const wrapper = shallow(<HomePage />);
 
     it('should be rendered', () => {
