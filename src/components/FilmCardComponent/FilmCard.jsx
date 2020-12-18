@@ -13,6 +13,9 @@ export class FilmCard extends React.PureComponent {
     };
 
     componentDidMount() {
+        this.setState({
+            isPosterLoad: true,
+        });
         this.getGenres(this.props.genre_ids);
     }
 
@@ -110,7 +113,7 @@ FilmCard.propTypes = {
     title: PropTypes.string.isRequired,
     release_date: PropTypes.string,
     genre_ids: PropTypes.arrayOf(PropTypes.number),
-    genres: PropTypes.arrayOf(PropTypes.string),
+    genres: PropTypes.arrayOf(PropTypes.object),
 };
 
 export default withRouter(FilmCard);

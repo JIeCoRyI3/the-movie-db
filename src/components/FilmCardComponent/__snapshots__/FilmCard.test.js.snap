@@ -31,12 +31,6 @@ exports[`<FilmCard> should render <FilmCard/> correctly 1`] = `
     </div>
     <p
       className="card-text undefined"
-      id="filmCardYear"
-    >
-      20.20.2323
-    </p>
-    <p
-      className="card-text undefined"
       id="filmCardGenresList"
     />
   </div>

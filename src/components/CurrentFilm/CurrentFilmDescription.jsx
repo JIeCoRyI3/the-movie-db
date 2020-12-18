@@ -16,7 +16,6 @@ export class CurrentFilmDescription extends Component {
 
     async componentDidMount() {
         const id = this.props.match.params.id;
-
         await this.getMovie(id);
     }
 
@@ -24,6 +23,12 @@ export class CurrentFilmDescription extends Component {
         if (this.props.match.params.id !== prevProps.match.params.id) {
             const id = this.props.match.params.id;
             this.getMovie(id);
+        }
+
+        if (this.state.filmData.poster_path && !this.state.isPosterLoad) {
+            this.setState({
+                isPosterLoad: true,
+            });
         }
     }
 
