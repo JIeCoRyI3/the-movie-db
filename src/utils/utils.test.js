@@ -6,7 +6,7 @@ describe('formatDate()', () => {
     });
 
     it('Should return correct date', () => {
-        expect(formatDate('2001/07/27')).toBe('27.7.2001');
+        expect(formatDate('2001/07/27')).toBe('27.07.2001');
     });
 
     it('Should return empty string', () => {

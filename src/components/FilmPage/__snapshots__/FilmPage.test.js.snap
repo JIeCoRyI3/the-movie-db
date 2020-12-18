@@ -4,9 +4,9 @@ exports[`<FilmPage> should render <FilmPage/> correctly 1`] = `
 <div
   className="filmPage"
 >
-  <Connect(Header)>
+  <withRouter(Connect(Header))>
     <withRouter(CurrentFilmDescription) />
-  </Connect(Header)>
+  </withRouter(Connect(Header))>
   <withRouter(Connect(MainContainer)) />
 </div>
 `;

@@ -3,8 +3,11 @@ export const formatDate = (dateString) => {
         const convertedToDate = new Date(dateString);
 
         const publishYear = convertedToDate.getFullYear();
-        const publishMonth = convertedToDate.getMonth() + 1;
-        const publishDate = convertedToDate.getDate();
+        let publishMonth = convertedToDate.getMonth() + 1;
+        let publishDate = convertedToDate.getDate();
+
+        if (publishMonth < 10) publishMonth = '0' + publishMonth;
+        if (publishDate < 10) publishDate = '0' + publishDate;
 
         const result = `${publishDate}.${publishMonth}.${publishYear}`;
 
