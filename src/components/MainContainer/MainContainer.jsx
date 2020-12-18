@@ -10,27 +10,25 @@ import {
     loadDataByGenre,
 } from '../SearchBar/connect-store';
 import { withRouter } from 'react-router';
+import { getSearchParams } from '../../utils/utils';
 
 class MainContainer extends React.Component {
     componentDidMount() {
-        this.searchBy = new URLSearchParams(this.props.location.search).get(
-            'searchBy'
-        );
-        this.input = new URLSearchParams(this.props.location.search).get(
-            'input'
-        );
+        const urlParams = getSearchParams(this.props.location.search);
 
-        if (this.searchBy) {
-            switch (this.searchBy) {
+        if (urlParams.searchBy) {
+            switch (urlParams.searchBy) {
                 case 'title':
-                    this.props.loadDataByTitle({ query: this.input });
+                    this.props.loadDataByTitle({ query: urlParams.input });
                     break;
                 case 'genre':
-                    this.props.loadDataByGenre({ with_genres: this.input });
+                    this.props.loadDataByGenre({
+                        with_genres: urlParams.input,
+                    });
                     break;
                 case 'genreOrTitle':
                     this.props.loadDataByGenreOrTitle({
-                        title_and_genres: this.input,
+                        title_and_genres: urlParams.input,
                     });
                     break;
                 default:

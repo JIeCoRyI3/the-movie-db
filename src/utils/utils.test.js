@@ -1,4 +1,4 @@
-import { formatDate } from './utils';
+import { formatDate, getSearchParams } from './utils';
 
 describe('formatDate()', () => {
     it('Should return correct date', () => {
@@ -7,5 +7,15 @@ describe('formatDate()', () => {
 
     it('Should return error', () => {
         expect(() => formatDate('2020-20-202')).toThrowError(Error);
+    });
+});
+
+describe('getSearchParams()', () => {
+    it('Should return correct params', () => {
+        const searchMock = '?search=some&hit=test';
+        expect(getSearchParams(searchMock)).toEqual({
+            search: 'some',
+            hit: 'test',
+        });
     });
 });
