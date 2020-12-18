@@ -37,7 +37,7 @@ describe('handle route', () => {
             poster_path: 'poster',
             title: 'title text',
             release_date: 'date',
-            genres: ['genres'],
+            genres: [{}, {}],
             id: undefined,
             location: {
                 search:
@@ -102,7 +102,7 @@ describe('<FilmCard>', () => {
             location: { search: '' },
         };
         jest.spyOn(instance, 'handleRoute');
-        wrapper.find('#filmCard').simulate('click');
+        wrapper.find('#filmCardContainer').simulate('click');
         expect(mock).toHaveBeenCalled();
     });
 

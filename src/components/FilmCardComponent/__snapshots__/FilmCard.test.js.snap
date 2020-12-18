@@ -3,7 +3,7 @@
 exports[`<FilmCard> should render <FilmCard/> correctly 1`] = `
 <div
   className="card undefined"
-  id="filmCard"
+  id="filmCardContainer"
   onClick={[Function]}
   style={
     Object {
