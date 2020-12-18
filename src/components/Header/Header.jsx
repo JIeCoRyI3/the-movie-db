@@ -14,7 +14,6 @@ export class Header extends Component {
 
     componentDidMount = () => {
         const urlParams = getSearchParams(this.props.location.search);
-        console.log(urlParams);
         if (urlParams.sortType === 'asc') {
             this.setState({
                 arrow: '˄',

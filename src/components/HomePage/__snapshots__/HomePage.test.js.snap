@@ -2,7 +2,7 @@
 
 exports[`<Footer /> should be rendered 1`] = `
 <Fragment>
-  <Connect(Header)>
+  <withRouter(Connect(Header))>
     <Switch>
       <Route
         component={[Function]}
@@ -15,6 +15,6 @@ exports[`<Footer /> should be rendered 1`] = `
         path="/film/:id"
       />
     </Switch>
-  </Connect(Header)>
+  </withRouter(Connect(Header))>
 </Fragment>
 `;

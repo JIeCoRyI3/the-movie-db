@@ -19,7 +19,7 @@ import { withRouter } from 'react-router';
 import { mapStateToProps } from '../../store/reducers/maps';
 import { getSearchParams } from '../../utils/utils';
 
-class MainContainer extends React.Component {
+export class MainContainer extends React.Component {
     state = {
         isAscending: null,
         sortBy: null,

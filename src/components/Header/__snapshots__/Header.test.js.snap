@@ -37,7 +37,7 @@ exports[`<Header /> should renders 1`] = `
   <div />
   <div>
     <p>
-      Sort by: 
+      ˄ Sort by:
     </p>
     <button
       className="btn btn-primary undefined"
