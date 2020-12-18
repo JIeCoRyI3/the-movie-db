@@ -3,6 +3,7 @@ import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
 import styles from './FilmCard.module.css';
 import { formatDate } from '../../utils/utils';
+import { getSearchParams } from '../../utils/utils';
 
 class FilmCard extends React.Component {
     state = {
@@ -31,7 +32,12 @@ class FilmCard extends React.Component {
 
     handleRoute = () => {
         if (this.props.id) {
-            this.props.history.push(`/film/${this.props.id}`);
+            const urlParams = getSearchParams(this.props.location.search);
+            this.props.history.push(
+                `/film/${this.props.id}?searchBy=${urlParams.searchBy}${
+                    urlParams.input ? '&input=' + urlParams.input : ''
+                }`
+            );
             this.scrollToCurrentFilm();
         }
     };
