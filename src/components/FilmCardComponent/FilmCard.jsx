@@ -34,6 +34,7 @@ export class FilmCard extends React.PureComponent {
     handleRoute = () => {
         if (this.props.id) {
             this.props.history.push(`/film/${this.props.id}`);
+            this.scrollToCurrentFilm();
         }
     };
 
@@ -42,6 +43,10 @@ export class FilmCard extends React.PureComponent {
             isPosterLoad: false,
         });
     }
+
+    scrollToCurrentFilm = () => {
+        document.documentElement.scrollTop = 0;
+    };
 
     render() {
         return (
@@ -69,11 +74,14 @@ export class FilmCard extends React.PureComponent {
                             {this.props.original_title}
                         </h5>
                     </div>
-                    <p className={`card-text ${styles.filmCardYear}`}
-                        id='filmCardYear'
-                    >
+                    {!!this.props.release_date &&
+                    formatDate(this.props.release_date) ? (
+                      <p className={`card-text ${styles.filmCardYear}`}
+                         id='filmCardYear'
+                      >
                         {formatDate(this.props.release_date)}
-                    </p>
+                      </p>
+                    ) : null}
                     <p className={`card-text ${styles.filmCardGenresList}`}
                         id='filmCardGenresList'
                     >
