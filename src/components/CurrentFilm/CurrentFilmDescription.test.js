@@ -73,7 +73,7 @@ describe('<CurrentFilmDescription/>', () => {
         spy.mockRestore();
     });
 
-    xit('should return date', () => {
+    it('should return date', () => {
         const instance = wrapper.instance();
         const spy = jest.spyOn(instance, 'getDate');
         instance.state.filmData = {

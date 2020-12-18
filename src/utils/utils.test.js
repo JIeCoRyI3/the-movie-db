@@ -1,6 +1,6 @@
 import { formatDate, getSearchParams } from './utils';
 
-xdescribe('formatDate()', () => {
+describe('formatDate()', () => {
     it('Should return correct date', () => {
         expect(formatDate('2020-12-20')).toBe('20.12.2020');
     });
