@@ -9,7 +9,7 @@ import { loadData } from './connect-store';
 import MainContainer from '../components/MainContainer';
 import LoaderComponent from '../components/LoaderComponent';
 
-class App extends React.Component {
+export class App extends React.Component {
     componentDidMount() {
         this.props.loadData();
     }

@@ -68,7 +68,6 @@ export class FilmCard extends React.PureComponent {
                 onClick={this.handleRoute}
                 className={`card ${styles.filmCard}`}
                 style={{ width: 18 + 'rem' }}
-                id="filmCard"
             >
                 <div className={styles.filmCardImgWrap}>
                     <img
