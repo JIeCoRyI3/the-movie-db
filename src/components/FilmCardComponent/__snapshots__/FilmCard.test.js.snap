@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<FilmCard> should render <FilmCard/> correctly 1`] = `
+<div
+  className="card undefined"
+  id="filmCard"
+  onClick={[Function]}
+  style={
+    Object {
+      "width": "18rem",
+    }
+  }
+>
+  <div>
+    <img
+      alt="Poster"
+      className="card-img-top undefined"
+      id="filmCardImg"
+      onError={[Function]}
+      src="https://image.tmdb.org/t/p/w500/poster"
+    />
+  </div>
+  <div
+    className="card-body undefined"
+  >
+    <div>
+      <h5
+        className="card-title undefined"
+        id="filmCardTitle"
+      />
+    </div>
+    <p
+      className="card-text undefined"
+      id="filmCardGenresList"
+    />
+  </div>
+</div>
+`;

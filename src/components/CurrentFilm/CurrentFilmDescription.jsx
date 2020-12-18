@@ -3,6 +3,7 @@ import { withRouter } from 'react-router';
 import styles from './CurrentFilmDescription.module.css';
 import ApiClient from '../../api/apiClient';
 import { formatDate } from '../../utils/utils';
+import placeholder from '../../assets/images/placeholder.png';
 
 const api = new ApiClient();
 
@@ -10,6 +11,7 @@ export class CurrentFilmDescription extends Component {
     state = {
         filmData: {},
         genres: null,
+        isPosterLoad: true,
     };
 
     async componentDidMount() {
@@ -54,6 +56,12 @@ export class CurrentFilmDescription extends Component {
         }
     };
 
+    errorPosterHandler = () => {
+        this.setState({
+            isPosterLoad: false,
+        });
+    };
+
     render() {
         const {
             original_title,
@@ -66,18 +74,26 @@ export class CurrentFilmDescription extends Component {
             <div className={styles.currentFilmContainer}>
                 <img
                     className={styles.poster}
-                    src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
                     alt={original_title}
                     title={original_title}
+                    onError={this.errorPosterHandler}
+                    src={
+                        this.state.isPosterLoad
+                            ? `https://image.tmdb.org/t/p/w500/${poster_path}`
+                            : placeholder
+                    }
+                    id="poster"
                 />
                 <div className={styles.detailsContainer}>
                     <div className={styles.titleContainer}>
                         <h4 className={styles.titleFilmName}>
                             {original_title}
                         </h4>
-                        <h4 className={styles.ratingFilmName}>
-                            {vote_average}
-                        </h4>
+                        <div className={styles.ratingFilmNameWrap}>
+                            <h4 className={styles.ratingFilmName}>
+                                {vote_average}
+                            </h4>
+                        </div>
                     </div>
                     <div className={styles.dateDescriptionGenre}>
                         <h5 className={styles.yearFilmName}>

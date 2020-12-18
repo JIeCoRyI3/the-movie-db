@@ -83,4 +83,13 @@ describe('<CurrentFilmDescription/>', () => {
         expect(spy()).toBe('28.08.2002');
         spy.mockRestore();
     });
+
+    it('should handle error poster', () => {
+        const instance = wrapper.instance();
+        const mock = jest.fn();
+        instance.props = { isPosterLoad: mock() };
+        jest.spyOn(instance, 'errorPosterHandler');
+        wrapper.find('#poster').simulate('error');
+        expect(mock).toHaveBeenCalled();
+    });
 });
