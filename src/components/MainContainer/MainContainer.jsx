@@ -18,6 +18,7 @@ import {
 import { withRouter } from 'react-router';
 import { mapStateToProps } from '../../store/reducers/maps';
 import { getSearchParams } from '../../utils/utils';
+import LoaderComponent from '../LoaderComponent';
 
 export class MainContainer extends React.Component {
     state = {
@@ -82,6 +83,10 @@ export class MainContainer extends React.Component {
     };
 
     render() {
+        if (this.props.loading) {
+            return <LoaderComponent />;
+        }
+
         return (
             <main className={styles.mainContainer}>
                 {this.props.films && this.props.films.length ? (

@@ -98,7 +98,7 @@ export class Header extends Component {
                         path="/film/:id"
                         render={() => (
                             <Link
-                                to="/"
+                                to={`/${this.props.location.search}`}
                                 className={`btn btn-primary ${styles.goBack}`}
                             >
                                 go back
@@ -141,4 +141,6 @@ Header.propTypes = {
     match: PropTypes.object,
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header));
+const withStore = connect(mapStateToProps, mapDispatchToProps);
+
+export default withRouter(withStore(Header));

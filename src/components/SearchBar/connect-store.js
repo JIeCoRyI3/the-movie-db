@@ -1,22 +1,27 @@
 import { loadMovies } from '../../store/actions-creators/loadMovies';
 import ApiClient from '../../api/apiClient';
+import { LOADING } from '../../store/actions/appActions';
 
 const api = new ApiClient();
 
 export const loadDataByTitle = (filterObj) => {
     return (dispatch) => {
+        dispatch({ type: LOADING, payload: { loading: true } });
         return filterObj.query
             ? api.filterBy(filterObj).then((res) => {
                   dispatch(loadMovies(res.results.splice(0, 18)));
+                  dispatch({ type: LOADING, payload: { loading: false } });
               })
             : api.getAllMovies().then((res) => {
                   dispatch(loadMovies(res.results.splice(0, 18)));
+                  dispatch({ type: LOADING, payload: { loading: false } });
               });
     };
 };
 
 export const loadDataByGenre = (filterObj) => {
     return (dispatch, getState) => {
+        dispatch({ type: LOADING, payload: { loading: true } });
         if (filterObj.with_genres) {
             const genres = getState().app.genresList;
             const genre = genres.find((genre) =>
@@ -28,10 +33,12 @@ export const loadDataByGenre = (filterObj) => {
 
             return api.filterWithGenres(filterObj).then((res) => {
                 dispatch(loadMovies(res.results.splice(0, 18)));
+                dispatch({ type: LOADING, payload: { loading: false } });
             });
         } else {
             return api.getAllMovies().then((res) => {
                 dispatch(loadMovies(res.results.splice(0, 18)));
+                dispatch({ type: LOADING, payload: { loading: false } });
             });
         }
     };
@@ -39,6 +46,7 @@ export const loadDataByGenre = (filterObj) => {
 
 export const loadDataByGenreOrTitle = (filterObj) => {
     return (dispatch, getState) => {
+        dispatch({ type: LOADING, payload: { loading: true } });
         const filterObjForTitle = {
             query: filterObj.title_and_genres,
         };
@@ -65,10 +73,12 @@ export const loadDataByGenreOrTitle = (filterObj) => {
                           .sort((a, b) => a.id - b.id)
                           .splice(0, 18);
                       dispatch(loadMovies(moviesList));
+                      dispatch({ type: LOADING, payload: { loading: false } });
                   });
               })
             : api.getAllMovies().then((res) => {
                   dispatch(loadMovies(res.results.splice(0, 18)));
+                  dispatch({ type: LOADING, payload: { loading: false } });
               });
     };
 };
