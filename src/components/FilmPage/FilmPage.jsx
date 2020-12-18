@@ -4,8 +4,7 @@ import MainContainer from '../MainContainer';
 import PropTypes from 'prop-types';
 import CurrentFilmDescription from '../CurrentFilm';
 
-function FilmPage(props) {
-    console.log(props.match.params);
+function FilmPage() {
     return (
         <div className="filmPage">
             <Header>
@@ -16,12 +15,11 @@ function FilmPage(props) {
     );
 }
 
-// function FilmInfo() {
-//     return <div>Film`&apos;`s info component!</div>;
-// }
-
 FilmPage.propTypes = {
-    match: PropTypes.object,
+    children: PropTypes.oneOfType([
+      PropTypes.element,
+      PropTypes.elementType,
+    ])
 };
 
 export { FilmPage };
