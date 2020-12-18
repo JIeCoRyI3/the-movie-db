@@ -7,6 +7,7 @@ const initialState = {
     byRating: false,
     byReleaseDate: false,
     genresList: null,
+    loading: false,
 };
 
 export const appReducer = (state = initialState, action) => {
@@ -17,6 +18,10 @@ export const appReducer = (state = initialState, action) => {
         case constants.LOAD_GENRES: {
             return { ...state, ...action.payload };
         }
+        case constants.LOADING: {
+            return { ...state, ...action.payload };
+        }
+
         case constants.SORT_BY_RATING_DOWN: {
             return {
                 ...state,
