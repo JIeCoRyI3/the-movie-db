@@ -26,31 +26,28 @@ export class Header extends Component {
         }
     };
 
+    sortingConfiguration = (sortBy, sortType) => {
+        this.ascendingOrDescendingSymbol(sortBy);
+        this.pushGetParameters(sortBy, sortType);
+    };
+
     sortByRating = () => {
-        const props = this.props;
-        const sortBy = 'rating';
-        if (props.byRating) {
-            props.sortByRatingUp();
-            this.ascendingOrDescendingSymbol(sortBy);
-            this.pushGetParameters(sortBy, 'asc');
+        if (this.props.byRating) {
+            this.props.sortByRatingUp();
+            this.sortingConfiguration('rating', 'asc');
         } else {
-            props.sortByRatingDown();
-            this.ascendingOrDescendingSymbol(sortBy);
-            this.pushGetParameters(sortBy, 'desc');
+            this.props.sortByRatingDown();
+            this.sortingConfiguration('rating', 'desc');
         }
     };
 
     sortByDate = () => {
-        const props = this.props;
-        const sortBy = 'date';
-        if (props.byReleaseDate) {
-            props.sortByReleaseDateUp();
-            this.ascendingOrDescendingSymbol(sortBy);
-            this.pushGetParameters(sortBy, 'asc');
+        if (this.props.byReleaseDate) {
+            this.props.sortByReleaseDateUp();
+            this.sortingConfiguration('date', 'asc');
         } else {
-            props.sortByReleaseDateDown();
-            this.ascendingOrDescendingSymbol(sortBy);
-            this.pushGetParameters(sortBy, 'desc');
+            this.props.sortByReleaseDateDown();
+            this.sortingConfiguration('date', 'desc');
         }
     };
 
@@ -68,19 +65,17 @@ export class Header extends Component {
 
     pushGetParameters = (sortBy, sortType) => {
         const arrayOfParams = [];
-        const params = getSearchParams(this.props.location.search);
+        const urlParams = getSearchParams(this.props.location.search);
 
-        if (params.searchBy) {
-            arrayOfParams.push(`searchBy=${params.searchBy}`);
-        }
-        if (params.input) {
-            arrayOfParams.push(`input=${params.input}`);
+        for (let key in urlParams) {
+            if (key !== 'sortBy' && key !== 'sortType') {
+                arrayOfParams.push(`${key}=${urlParams[key]}`);
+            }
         }
         arrayOfParams.push(`sortBy=${sortBy}`);
         arrayOfParams.push(`sortType=${sortType}`);
 
         const getParams = arrayOfParams.join('&');
-
         this.props.history.push(`?${getParams}`);
     };
 

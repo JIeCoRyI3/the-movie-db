@@ -5,7 +5,7 @@ import styles from './FilmCard.module.css';
 import { formatDate } from '../../utils/utils';
 import { getSearchParams } from '../../utils/utils';
 
-class FilmCard extends React.Component {
+export class FilmCard extends React.Component {
     state = {
         genres: null,
     };
@@ -35,17 +35,10 @@ class FilmCard extends React.Component {
             const urlParams = getSearchParams(this.props.location.search);
             const arrayOfParams = [];
 
-            if (urlParams.searchBy) {
-                arrayOfParams.push(`searchBy=${urlParams.searchBy}`);
-            }
-            if (urlParams.input) {
-                arrayOfParams.push(`input=${urlParams.input}`);
-            }
-            if (urlParams.sortBy) {
-                arrayOfParams.push(`sortBy=${urlParams.sortBy}`);
-            }
-            if (urlParams.sortType) {
-                arrayOfParams.push(`sortType=${urlParams.sortType}`);
+            for (let key in urlParams) {
+                if (key) {
+                    arrayOfParams.push(`${key}=${urlParams[key]}`);
+                }
             }
 
             const getParams = arrayOfParams.join('&');
@@ -61,6 +54,7 @@ class FilmCard extends React.Component {
     render() {
         return (
             <div
+                id="filmCardContainer"
                 onClick={this.handleRoute}
                 className={`card ${styles.filmCard}`}
                 style={{ width: 18 + 'rem' }}
