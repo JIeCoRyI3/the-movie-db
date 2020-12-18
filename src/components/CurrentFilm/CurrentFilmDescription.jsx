@@ -78,6 +78,7 @@ export class CurrentFilmDescription extends Component {
                     title={original_title}
                     onError={ this.errorPosterHandler }
                     src={this.state.isPosterLoad ? `https://image.tmdb.org/t/p/w500/${poster_path}` : placeholder}
+                    id='poster'
                 />
                 <div className={styles.detailsContainer}>
                     <div className={styles.titleContainer}>
