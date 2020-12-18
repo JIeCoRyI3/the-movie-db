@@ -80,9 +80,9 @@ class FilmCard extends React.Component {
 }
 
 FilmCard.propTypes = {
-    poster_path: PropTypes.string.isRequired,
+    poster_path: PropTypes.string,
     title: PropTypes.string.isRequired,
-    release_date: PropTypes.string.isRequired,
+    release_date: PropTypes.string,
 };
 
 export default withRouter(FilmCard);
