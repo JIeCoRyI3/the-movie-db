@@ -69,7 +69,7 @@ export class CurrentFilmDescription extends Component {
 
     render() {
         const {
-            original_title,
+            title,
             vote_average,
             overview,
             poster_path,
@@ -79,8 +79,8 @@ export class CurrentFilmDescription extends Component {
             <div className={styles.currentFilmContainer}>
                 <img
                     className={styles.poster}
-                    alt={original_title}
-                    title={original_title}
+                    alt={title}
+                    title={title}
                     onError={this.errorPosterHandler}
                     src={
                         this.state.isPosterLoad
@@ -91,9 +91,7 @@ export class CurrentFilmDescription extends Component {
                 />
                 <div className={styles.detailsContainer}>
                     <div className={styles.titleContainer}>
-                        <h4 className={styles.titleFilmName}>
-                            {original_title}
-                        </h4>
+                        <h4 className={styles.titleFilmName}>{title}</h4>
                         <div className={styles.ratingFilmNameWrap}>
                             <h4 className={styles.ratingFilmName}>
                                 {vote_average}
@@ -110,7 +108,7 @@ export class CurrentFilmDescription extends Component {
                             </p>
                             <div className={styles.genresContainer}>
                                 <p className={styles.genresTitleFilmName}>
-                                    Genres:
+                                    {this.state.genres ? 'Genres:' : ''}
                                 </p>
                                 <p className={styles.genresFilmName}>
                                     {this.state.genres}

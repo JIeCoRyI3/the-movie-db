@@ -84,7 +84,7 @@ export class FilmCard extends React.PureComponent {
                             className={`card-title ${styles.filmCardTitle}`}
                             id="filmCardTitle"
                         >
-                            {this.props.original_title}
+                            {this.props.title}
                         </h5>
                     </div>
                     {!!this.props.release_date &&
