@@ -40,6 +40,10 @@ class MainContainer extends React.Component {
     }
 
     render() {
+        if (this.props.loading) {
+            return <LoaderComponent />;
+        }
+
         return (
             <main className={styles.mainContainer}>
                 {this.props.films && this.props.films.length ? (
@@ -47,8 +51,6 @@ class MainContainer extends React.Component {
                         films={this.props.films}
                         genres={this.props.genres}
                     />
-                ) : this.props.loading ? (
-                    <LoaderComponent />
                 ) : (
                     <NotFound />
                 )}
