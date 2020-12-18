@@ -14,6 +14,6 @@ describe('<LoaderComponent/> render', () => {
     });
 
     it('should have div with id #req', () => {
-        expect(wrapper.find('#req').exists).toBeTruthy();
+        expect(wrapper.find('#req').exists()).toBeTruthy();
     });
 });
