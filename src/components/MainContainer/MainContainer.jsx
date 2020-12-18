@@ -9,11 +9,40 @@ import {
     loadDataByGenreOrTitle,
     loadDataByGenre,
 } from '../SearchBar/connect-store';
+import {
+    sortByRatingDown,
+    sortByRatingUp,
+    sortByReleaseDateUp,
+    sortByReleaseDateDown,
+} from '../../store/actions-creators/sortBy';
 import { withRouter } from 'react-router';
+import { mapStateToProps } from '../../store/reducers/maps';
 import { getSearchParams } from '../../utils/utils';
 import LoaderComponent from '../LoaderComponent';
 
-class MainContainer extends React.Component {
+export class MainContainer extends React.Component {
+    state = {
+        isAscending: null,
+        sortBy: null,
+        sorted: false,
+    };
+
+    componentDidUpdate = () => {
+        if (this.props.films && !this.state.sorted) {
+            this.setState({
+                sorted: true,
+            });
+            const urlParams = getSearchParams(this.props.location.search);
+            if (urlParams.sortBy === 'rating') {
+                this.sortByRating();
+            }
+
+            if (urlParams.sortBy === 'date') {
+                this.sortByDate();
+            }
+        }
+    };
+
     componentDidMount() {
         const urlParams = getSearchParams(this.props.location.search);
 
@@ -36,6 +65,22 @@ class MainContainer extends React.Component {
             }
         }
     }
+
+    sortByDate = () => {
+        const props = this.props;
+        const urlParams = getSearchParams(this.props.location.search);
+        return urlParams.sortType === 'asc'
+            ? props.sortByReleaseDateUp()
+            : props.sortByReleaseDateDown();
+    };
+
+    sortByRating = () => {
+        const props = this.props;
+        const urlParams = getSearchParams(this.props.location.search);
+        return urlParams.sortType === 'asc'
+            ? props.sortByRatingUp()
+            : props.sortByRatingDown();
+    };
 
     render() {
         if (this.props.loading) {
@@ -68,16 +113,14 @@ MainContainer.propTypes = {
     ),
 };
 
-const mapStateToProps = (state) => ({
-    films: state.app.moviesList,
-    genres: state.app.genresList,
-    loading: state.app.loading,
-});
-
 const mapDispatchToProps = {
     loadDataByGenre,
     loadDataByTitle,
     loadDataByGenreOrTitle,
+    sortByRatingDown,
+    sortByRatingUp,
+    sortByReleaseDateUp,
+    sortByReleaseDateDown,
 };
 
 const withStore = connect(mapStateToProps, mapDispatchToProps);

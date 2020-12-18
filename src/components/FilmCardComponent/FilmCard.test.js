@@ -2,6 +2,65 @@ import React from 'react';
 import { FilmCard } from './FilmCard';
 import { shallow } from 'enzyme';
 
+describe('handle route', () => {
+    const props = {
+        poster_path: 'poster',
+        title: 'title text',
+        release_date: 'date',
+        genres: [{}, {}],
+        id: '123',
+        location: {
+            search:
+                '?searchBy=genreOrTitle&input=adv&sortBy=rating&sortType=asc',
+        },
+        genre_ids: [35, 80, 53],
+        history: {
+            push() {
+                return 1;
+            },
+        },
+    };
+
+    it('shoud call handleRoute', () => {
+        const wrapper = shallow(<FilmCard {...props} />);
+        const instance = wrapper.instance();
+
+        jest.spyOn(instance, 'handleRoute');
+
+        instance.handleRoute();
+
+        expect(instance.handleRoute).toHaveBeenCalled();
+    });
+
+    it('should use another branch', () => {
+        const props = {
+            poster_path: 'poster',
+            title: 'title text',
+            release_date: 'date',
+            genres: ['genres'],
+            id: undefined,
+            location: {
+                search:
+                    '?searchBy=genreOrTitle&input=adv&sortBy=rating&sortType=asc',
+            },
+            genre_ids: [35, 80, 53],
+            history: {
+                push() {
+                    return 1;
+                },
+            },
+        };
+        const wrapper = shallow(<FilmCard {...props} />);
+        const instance = wrapper.instance();
+
+        jest.spyOn(instance, 'handleRoute');
+
+        instance.handleRoute();
+
+        expect(instance.handleRoute).toHaveBeenCalled();
+    });
+});
+
 describe('<FilmCard>', () => {
     let wrapper;
 

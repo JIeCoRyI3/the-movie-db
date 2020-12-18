@@ -27,7 +27,9 @@ exports[`<FilmCard> should render <FilmCard/> correctly 1`] = `
       <h5
         className="card-title undefined"
         id="filmCardTitle"
-      />
+      >
+        title text
+      </h5>
     </div>
     <p
       className="card-text undefined"

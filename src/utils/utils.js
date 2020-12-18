@@ -29,6 +29,5 @@ export const getSearchParams = (search) => {
     for (const [key, value] of searchParams) {
         params[key] = value;
     }
-
     return params;
 };

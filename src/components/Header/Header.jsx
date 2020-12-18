@@ -5,23 +5,81 @@ import Logo from '../Logo';
 import styles from './Header.module.css';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '../../store/reducers/maps';
+import { getSearchParams } from '../../utils/utils';
 
 export class Header extends Component {
+    state = {
+        arrow: '',
+    };
+
+    componentDidMount = () => {
+        const urlParams = getSearchParams(this.props.location.search);
+        if (urlParams.sortType === 'asc') {
+            this.setState({
+                arrow: '˄',
+            });
+        }
+        if (urlParams.sortType === 'desc') {
+            this.setState({
+                arrow: '˅',
+            });
+        }
+    };
+
+    sortingConfiguration = (sortBy, sortType) => {
+        this.ascendingOrDescendingSymbol(sortBy);
+        this.pushGetParameters(sortBy, sortType);
+    };
+
     sortByRating = () => {
-        const props = this.props;
-        return props.byRating
-            ? props.sortByRatingUp()
-            : props.sortByRatingDown();
+        if (this.props.byRating) {
+            this.props.sortByRatingUp();
+            this.sortingConfiguration('rating', 'asc');
+        } else {
+            this.props.sortByRatingDown();
+            this.sortingConfiguration('rating', 'desc');
+        }
     };
 
-    sortByReleaseDate = () => {
-        const props = this.props;
-        return props.byReleaseDate
-            ? props.sortByReleaseDateUp()
-            : props.sortByReleaseDateDown();
+    sortByDate = () => {
+        if (this.props.byReleaseDate) {
+            this.props.sortByReleaseDateUp();
+            this.sortingConfiguration('date', 'asc');
+        } else {
+            this.props.sortByReleaseDateDown();
+            this.sortingConfiguration('date', 'desc');
+        }
     };
 
-    render() {
+    ascendingOrDescendingSymbol = (sortBy) => {
+        let arrow;
+        if (sortBy === 'date') {
+            arrow = this.props.byReleaseDate ? '˄' : '˅';
+        } else {
+            arrow = this.props.byRating ? '˄' : '˅';
+        }
+        this.setState({
+            arrow: arrow,
+        });
+    };
+
+    pushGetParameters = (sortBy, sortType) => {
+        const arrayOfParams = [];
+        const urlParams = getSearchParams(this.props.location.search);
+
+        for (let key in urlParams) {
+            if (key !== 'sortBy' && key !== 'sortType') {
+                arrayOfParams.push(`${key}=${urlParams[key]}`);
+            }
+        }
+        arrayOfParams.push(`sortBy=${sortBy}`);
+        arrayOfParams.push(`sortType=${sortType}`);
+
+        const getParams = arrayOfParams.join('&');
+        this.props.history.push(`?${getParams}`);
+    };
+
+    render = () => {
         return (
             <section className={styles.headerComponent}>
                 <header className={styles.header}>
@@ -47,25 +105,27 @@ export class Header extends Component {
                     {this.props.children}
                 </div>
                 <div className={styles.headerSortBlock}>
-                    <p className={styles.sortBlockTitle}>Sort by: </p>
+                    <p
+                        className={styles.sortBlockTitle}
+                    >{`${this.state.arrow} Sort by:`}</p>
                     <button
                         id="rating"
                         onClick={this.sortByRating}
                         className={`btn btn-primary ${styles.sortRating}`}
                     >
-                        rating
+                        {`rating`}
                     </button>
                     <button
                         id="releaseDate"
-                        onClick={this.sortByReleaseDate}
+                        onClick={this.sortByDate}
                         className={`btn btn-primary ${styles.sortRelease}`}
                     >
-                        release date
+                        {`release date`}
                     </button>
                 </div>
             </section>
         );
-    }
+    };
 }
 
 Header.propTypes = {

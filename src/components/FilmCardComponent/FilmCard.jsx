@@ -37,11 +37,16 @@ export class FilmCard extends React.PureComponent {
     handleRoute = () => {
         if (this.props.id) {
             const urlParams = getSearchParams(this.props.location.search);
-            this.props.history.push(
-                `/film/${this.props.id}?searchBy=${urlParams.searchBy}${
-                    urlParams.input ? '&input=' + urlParams.input : ''
-                }`
-            );
+            const arrayOfParams = [];
+
+            for (let key in urlParams) {
+                if (key) {
+                    arrayOfParams.push(`${key}=${urlParams[key]}`);
+                }
+            }
+
+            const getParams = arrayOfParams.join('&');
+            this.props.history.push(`/film/${this.props.id}?${getParams}`);
             this.scrollToCurrentFilm();
         }
     };
@@ -59,6 +64,7 @@ export class FilmCard extends React.PureComponent {
     render() {
         return (
             <div
+                id="filmCardContainer"
                 onClick={this.handleRoute}
                 className={`card ${styles.filmCard}`}
                 style={{ width: 18 + 'rem' }}
