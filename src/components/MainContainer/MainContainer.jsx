@@ -10,6 +10,7 @@ import {
     loadDataByGenre,
 } from '../SearchBar/connect-store';
 import { withRouter } from 'react-router';
+import LoaderComponent from '../LoaderComponent';
 
 class MainContainer extends React.Component {
     componentDidMount() {
@@ -39,6 +40,10 @@ class MainContainer extends React.Component {
     }
 
     render() {
+        if (this.props.loading) {
+            return <LoaderComponent />;
+        }
+
         return (
             <main className={styles.mainContainer}>
                 {this.props.films && this.props.films.length ? (
@@ -68,6 +73,7 @@ MainContainer.propTypes = {
 const mapStateToProps = (state) => ({
     films: state.app.moviesList,
     genres: state.app.genresList,
+    loading: state.app.loading,
 });
 
 const mapDispatchToProps = {

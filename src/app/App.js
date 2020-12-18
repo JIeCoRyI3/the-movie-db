@@ -7,6 +7,7 @@ import Footer from '../components/Footer';
 import { connect } from 'react-redux';
 import { loadData } from './connect-store';
 import MainContainer from '../components/MainContainer';
+import LoaderComponent from '../components/LoaderComponent';
 
 class App extends React.Component {
     componentDidMount() {
@@ -27,7 +28,7 @@ class App extends React.Component {
                 </div>
             </BrowserRouter>
         ) : (
-            <h1>Loading</h1>
+            <LoaderComponent />
         );
     }
 }
